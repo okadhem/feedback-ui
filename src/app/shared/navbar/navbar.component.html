@@ -1,0 +1,138 @@
+<!--
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <img src="../assets/img/logoo.PNG" style="width: 120%">
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="col-md-5">
+      <ul class="nav navbar-nav" style="margin-left: 7%;margin-top: 1%">
+          <weather-widget></weather-widget>
+        <a class="nav-link" style="color: #17498e;font-size: 15px">Nous sommes le :{{today|date}}</a>
+
+      </ul>
+      </div>
+      <div class="col-md-9">
+        <ul class="nav navbar-nav navbar-right" style="margin-top: 1%;margin-right: -288px;">
+
+          <div class="row">
+
+
+            <div class="col-md-3">
+              <button class='pulse-button1'>
+                <i class="material-icons" style="color: white;font-size: 13px">&#xe0b7;</i>
+              </button>
+              <a style="color:#20324a;font-size: 12px;margin-top: 0%">Annuaire</a>
+            </div>
+            <div class="col-md-3">
+              <button class='pulse-button1'>?</button>
+              <a style="color:#20324a;font-size: 12px;margin-top: 0%; margin-right: 10%"> Aide</a>
+            </div>
+            <div class="col-md-3">
+              <app-categorie-list></app-categorie-list>
+            </div>
+            <div class="col-md-3" *ngIf="notifSupport">
+              <app-notification></app-notification>
+              <a style="color:#20324a;font-size: 12px;margin-top: 0%"> Notification</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+  </div>
+</nav>
+--><!--
+<mat-toolbar style="background-color: transparent;height: 30%">
+
+<mat-toolbar-row>
+
+
+  <img src="../assets/img/logoo.PNG" style="    margin-top: 3%;
+    width: 15%;">
+
+  <span class="example-spacer" style="margin-top: 9%;cursor: pointer;      margin-top: 12%;    width: 47%;"> <weather-widget ></weather-widget></span>
+  <span class="example-spacer" style="    background-color: #c0c0c0;
+    width: 2px;
+    height: 128px;
+    margin-top: 5%;
+       margin-left: -26%;"></span>
+  <span  class="example-spacer" style="font-size: 15px;color: #c0c0c0;font-family: Calibri;font-weight: bold;margin-left: 2%"> Nous sommes Le : <br> {{today| date : 'medium'}}</span>
+
+  <span class="example-spacer" style=" width: 9%;    margin-top: 5%;    margin-left: 14%;"><button class='pulse-button1'>
+    <i class="material-icons" style="color: white;font-size: 17px">&#xe0b7;</i>
+  </button>
+    <a style="color:#20324a;font-size: 12px;margin-top: 0%;cursor: pointer;text-decoration: none;font-size: 14px;font-family: Calibri;font-weight: bold">Consulter l'annuaire  </a></span>
+
+
+  <span class="example-spacer" style=" width: 9%;cursor: pointer   ; margin-left: 2%;    margin-top: 5%;"> <button class='pulse-button1'>?</button>
+    <a style="color:#20324a;font-size: 12px;margin-top: 0%; margin-right: 10%;cursor: pointer;text-decoration: none;font-size: 14px;font-family: Calibri;font-weight: bold"> Besoin d'aide</a></span>
+
+
+  <span class="example-spacer" style=" width: 9%;cursor: pointer;text-decoration: none;    margin-top: 5%;"> <app-categorie-list></app-categorie-list> </span>
+
+  <span class="example-spacer" style=" width: 9%;cursor: pointer;text-decoration: none;    margin-top: 5%;" *ngIf="notifSupport"><app-notification></app-notification></span>
+
+  <span class="example-spacer" style=" width: 9%;cursor: pointer;text-decoration: none;    margin-top: 5%;"><i class="material-icons" style="    color: #004085;
+    cursor: pointer;
+    font-size: 44px;
+    margin-top: 7%;">exit_to_app</i></span>
+
+</mat-toolbar-row>
+</mat-toolbar>
+-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>-->
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="../assets/img/logoo.PNG" style="margin-top: 0%;width: 130%;margin-left: 25%">
+    </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="nav navbar-nav">
+      <li style="width: 114%;">
+
+
+        <weather-widget ></weather-widget>
+
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <!--<li > <button class='pulse-button1' style="    margin-left: -134%;">
+        <i class="material-icons" style="color: white;font-size: 17px">&#xe0b7;</i>
+      </button>
+        <a style="color:#20324a;font-size: 12px;margin-top: 0%;cursor: pointer;text-decoration: none;font-size: 12px;font-family: Calibri;font-weight: bold; margin-top: -53%; margin-left: -91%">ANNUAIRE  </a></li>
+      <li> <button class='pulse-button1' style="margin-left: -132%">?</button>
+        <a style="color:#20324a;font-size: 12px;margin-top: 0%; margin-right: 10%;cursor: pointer;text-decoration: none;font-size: 12px;font-family: Calibri;font-weight: bold; margin-top: -84%;    margin-left: -54%;">AIDE</a></li>-->
+      <li ><app-categorie-list></app-categorie-list></li>
+      <li> <span class="example-spacer" style=" width: 9%;cursor: pointer;text-decoration: none;    margin-top: 5%;" *ngIf="notifSupport"><app-notification></app-notification></span></li>
+      <li>  <span class="example-spacer" style=" width: 9%;cursor: pointer;text-decoration: none;margin-top: 5%;">
+        <i class="material-icons" style="    color: #004085; cursor: pointer;font-size: 44px;margin-top: 7%;" (click)="close()">exit_to_app</i>
+      </span>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+
+
+
+

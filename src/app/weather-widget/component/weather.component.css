@@ -1,0 +1,71 @@
+h4 {
+    margin-top: 25px;
+    font-size: 1.3rem;
+}
+.card {
+    /*box-shadow: 2px 2px 5px rgba(0,0,0,0.24);*/
+    text-transform: uppercase;
+}
+.card-footer, .card-header {
+    height: 30px;
+    width: 300px;
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
+    background-color: transparent;
+  padding: auto;
+}
+.card-block {
+
+  text-align: center;
+  height: 100px;
+  width: 300px;
+
+}
+
+canvas {
+    margin-bottom: 20px;
+    width:100%;
+  margin-top: 10px;
+
+}
+#units {
+    /*text-transform: lowercase;*/
+}
+.fa-map-marker {
+    padding-right: 5px;
+}
+.card, .card-footer, .card-header, .card-block, .indicator {
+    transition: all 1s;
+  border: white !important;
+}
+
+.font_size{
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+:host >>>.ui-panel{
+  border:none;
+}
+:host >>> .ui-widget-header {
+  background-color:#FFFFFF !important;
+  color: #c0c0c0;
+  font-weight: bold;
+  display: none !important;
+
+}
+:host >>> .ui-panel-titlebar {
+  background-color:#FFFFFF !important;
+  color: #c0c0c0;
+  font-weight: bold;
+}
+
+.noMargin{
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #weather {
+    margin-left: -225px;
+  }
+}

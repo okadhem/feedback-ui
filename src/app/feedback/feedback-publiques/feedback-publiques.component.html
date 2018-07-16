@@ -1,0 +1,73 @@
+
+<div class="container" style="background-color: #f6f6f6;
+height: 17%;
+border: #DDDDDD solid 1px;
+width: 102.8%;
+margin-left: -1.4%;
+margin-top: 0.5%;">
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+
+      <strong> <span   style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085">Les Feedbacks Publiques</span></strong>
+    </div>
+  <div class="col-md-3">
+    <strong> <span   style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085">Feedbacks Publiques</span></strong>
+    <br>
+    <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{FeedbacksPublic.length}}</span></strong>
+
+  </div>
+    <div class="col-md-3">
+      <strong> <span  style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085">Feedbacks Publiques traités</span></strong>
+      <br>
+      <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{feedWithRep.length}}</span></strong>
+
+    </div>
+  </div>
+</div>
+<table *ngIf="FeedbacksPublic.length>0&& ready" datatable class="table table-hover" [dtOptions]="dtOptions">
+  <thead style="background-color: #ffffff">
+  <tr style="height: 70px">
+    <th>Objet Feedback</th>
+    <th>Propriétaire</th>
+    <th>Date Envoie </th>
+    <th>Categorie</th>
+    <th>Réponse</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody style="font-family: Calibri;color: #6c757d;font-weight: bold;">
+  <tr *ngFor="let item of FeedbacksPublic ; let i = index" (click)="tableEvent(item)" (mouseover)="show(i)" (mouseleave)="dontshow(i)">
+
+    <td data-toggle="modal" data-target="#myModalpub">{{item.objetFeedback}}</td>
+    <td *ngIf="item?.anonymatFeedback==false" data-target="#myModalpub">{{item?.employee.lastName}} AAAA</td>
+    <td *ngIf="item?.anonymatFeedback==true" data-target="#myModalpub">Anonyme</td>
+    <td data-toggle="modal" data-target="#myModalpub">{{item.dateCreation|date:'short'}}</td>
+    <td data-toggle="modal" data-target="#myModalpub">{{item.categorieDTO.typeCategorie}}</td>
+    <td>
+      <ng-container *ngFor="let nb of repFeedback" >
+        <a data-toggle="modal" data-target="#myModalpub" *ngIf="item.idFeedback === nb.feedbackDTO "  [hidden]="repFeedback.length==0">
+
+          <i class="material-icons" style="color: #71c2ab;font-size: 15px;cursor: pointer;">insert_comment</i>
+
+          <span style="cursor: auto;text-decoration: none;font-size: 18px"  >{{nb.nbrRep}}</span>
+        </a>
+      </ng-container>
+    </td>
+    <td></td>
+    <td>
+      <ng-container *ngFor="let file of feedbackFile">
+        <a *ngIf="item.idFeedback === file.feedbackDTO.idFeedback"
+           href="http://localhost:8080/FEEDBACK/api/DownloadFile/{{file.path}}">
+          <i *ngIf="showw[i]" class="material-icons" style="color: #17498f;font-size: 20px;cursor: pointer; ">file_download</i>
+        </a>
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div id="myModalpub" class="modal fade" role="dialog">
+  <app-detail-feedback [id]="idfeed" (testRep)="reloadTab($event)"></app-detail-feedback>
+</div>
+

@@ -1,0 +1,65 @@
+<div class="dropdown" style="color: white;">
+
+   <span  data-toggle="dropdown" class="glyphicon glyphicon-bell" style="        margin-left: 41%;
+    margin-top: 17%;
+    color: #004085;
+    font-size: 27px;">
+     <span class="badge" style="    background-color: red;
+    margin-top: -95px;
+    margin-left:31%;" *ngIf="ready&&notificationNonVu.length!=0">{{notificationNonVu.length}}</span>
+
+   </span>
+    <span class="caret"></span>
+
+  <ul class="dropdown-menu scrollable-menu" *ngIf="ready" style="width: 332%;text-decoration: none; margin-top: -50%; margin-right: 38%;">
+    <ng-container *ngFor="let item of allNotification">
+      <li *ngIf="item.etatNotif==='Non Vue'" style="background-color:#d5e5ee; ">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1">
+              <img src="../assets/img/homme.jpg" alt="Avatar" style="width:100%;" *ngIf="item.personnelExpediteur.civilityId==1">
+              <img src="../assets/img/femme.jpg" alt="Avatar" style="width:100%;" *ngIf="item.personnelExpediteur.civilityId!==1">
+            </div>
+            <div class="col-md-3">
+              <a (click)="getFeedback(item)" data-toggle="modal" data-target="#myModalmes" style="cursor: pointer;text-decoration: none">
+                <p style="font-weight:bold;text-decoration: none  ">{{item?.feedback.employee.lastName}} AAAA</p> a ajoute une
+                <span style="font-weight:bold;text-decoration: none">{{item.feedback.categorieDTO.typeCategorie}}</span> <br>
+                <span style="font-weight:bold;text-decoration: none;font-size: 10px;color:#868e96 "> Envoyé le {{item.dateCreation | date : 'medium'}}</span>
+                <i class="material-icons" style="font-size: 28px;color: #212529">more_vert</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </li>
+      <li *ngIf="item.etatNotif==='Vu'" >
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1">
+              <img src="../assets/img/homme.jpg" alt="Avatar" style="width:100%;" *ngIf="item.personnelExpediteur.civilityId==1">
+              <img src="../assets/img/femme.jpg" alt="Avatar" style="width:100%;" *ngIf="item.personnelExpediteur.civilityId!==1">
+            </div>
+            <div class="col-md-3">
+              <a (click)="getFeedback(item)" data-toggle="modal" data-target="#myModalmes" style="cursor: pointer;text-decoration: none">
+                <p style="font-weight:bold;text-decoration: none ">{{item?.feedback.employee.lastName}} AAAA</p> a ajoute une
+                <span style="font-weight:bold;text-decoration: none">{{item.feedback.categorieDTO.typeCategorie}}</span>
+                <br>
+                <span style="font-weight:bold;text-decoration: none;font-size: 10px;color:#868e96 "> Envoyé le {{item.dateCreation | date : 'medium'}}</span>
+                <i class="material-icons" style="font-size: 28px;color: #212529;margin-left: -3%;" title="ne plus afficher cette notification">more_vert</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </li>
+
+
+    </ng-container>
+  </ul>
+</div>
+
+<div id="myModalmes" class="modal fade" role="dialog">
+  <app-detail-feedback [id]="id"></app-detail-feedback>
+</div>
+

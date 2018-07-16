@@ -1,0 +1,165 @@
+<div class="container" style="background-color: #f6f6f6;
+height: 17%;
+border: #DDDDDD solid 1px;
+width: 102.8%;
+margin-left: -1.4%;
+margin-top: 3.5%;">
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <strong> <span
+        style="font-family: Calibri;font-size: 16px;font-style: italic;color: #17498f">Liste de tous les Feedbacks </span></strong>
+
+    </div>
+    <div class="col-md-2" >
+      <strong> <span
+        style="font-family: Calibri;font-size: 16px;font-style: italic;color: #17498f">Feedbacks </span></strong>
+      <br>
+      <strong> <span
+        style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 5%;">{{Feedbacks.length}}</span></strong>
+
+    </div>
+    <div class="col-md-2" >
+      <strong> <span
+        style="font-family: Calibri;font-size: 16px;font-style: italic;color: #17498f">Feedbacks traités</span></strong>
+      <br>
+      <strong> <span
+        style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{idFeedback.length}}</span>
+      </strong>
+
+      <strong> <span
+        style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;" *ngIf="nbFeedbackTraite===null">0</span>
+      </strong>
+
+    </div>
+  </div>
+</div>
+<table *ngIf="Feedbacks.length>0&&ready" datatable class="table table-hover table-responsive" [dtOptions]="dtOptions">
+  <thead style="background-color: #ffffff">
+  <tr style="height: 70px">
+
+    <th>Objet Feedback</th>
+    <th>Date envoi</th>
+    <th>Propriétaire</th>
+    <th>Categorie</th>
+    <th>Réponse</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
+
+  </tr>
+  </thead>
+  <tbody style="font-family: Calibri;color: #6c757d;font-weight: bold;">
+  <ng-container *ngFor="let item of Feedbacks ;let i = index "
+                (mouseover)="show(i);getAffectationByFeedback(item.idFeedback)" (mouseleave)="dontshow(i)">
+    <tr (click)="tableEvent(item)" (mouseover)="show(i)" (mouseleave)="dontshow(i)" >
+      <th data-toggle="modal" data-target="#allFeedback" style="cursor: pointer">{{item.objetFeedback}} <span class="badge" style="background-color: #868e96;color: white" *ngIf="showDate(item)==true">NOUVEAU</span> </th>
+      <td data-toggle="modal" data-target="#allFeedback" style="cursor: pointer">{{item.dateCreation|date }}
+      </td>
+      <td data-toggle="modal" data-target="#allFeedback" style="cursor: pointer" >{{item?.employee.lastName}} AAAA
+      </td>
+      <td data-toggle="modal" data-target="#allFeedback" style="cursor: pointer">{{item.categorieDTO.typeCategorie}}
+      </td>
+      <td>
+        <ng-container *ngFor="let nb of repFeedback" >
+          <a data-toggle="modal" data-target="#allFeedback" *ngIf="item.idFeedback === nb.feedbackDTO"  [hidden]="repFeedback.length==0">
+
+            <i class="material-icons" style="color: #71c2ab;font-size: 15px;cursor: pointer;">insert_comment</i>
+
+            <span style="cursor: auto;text-decoration: none;font-size: 18px"  >{{nb.nbrRep}}</span>
+          </a>
+        </ng-container>
+
+      </td>
+      <td>
+        <div class="row">
+          <div class="col-md-2">
+            <i id="public" *ngIf="item.visibiliteFeedback==true" style="color: #17498f;font-size: 18px"
+               class="material-icons">public</i>
+            <i *ngIf="item.visibiliteFeedback==false" style="color: #17498f;font-size: 18px"
+               class="material-icons">lock</i>
+          </div>
+          <div class="col-md-2">
+            <i *ngIf="item.criticite=='Normal'&&item.categorieDTO.typeCategorie=='ANOMALIE'" class="material-icons"
+               style="color:#d6cc0c ;font-size: 18px">whatshot</i>
+            <i *ngIf="item.criticite=='Urgent'&&item.categorieDTO.typeCategorie=='ANOMALIE'" class="material-icons"
+               style="color:#8dc30c ;font-size: 18px">whatshot</i>
+            <i *ngIf="item.criticite=='Bloquant'&&item.categorieDTO.typeCategorie=='ANOMALIE'" class="material-icons"
+               style="color:#990000 ;font-size: 18px">whatshot</i>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="row">
+          <div class="col-md-1 dropdown" (click)="getAffectationByFeedback(item.idFeedback)"
+               (mouseover)="getAffectationByFeedback(item.idFeedback)">
+            <i *ngIf="showw[i]" class="material-icons" style="color: #17498f;font-size: 20px;cursor: pointer; "
+               (click)="openDialog(item.idFeedback)">person_add</i>
+            <div class="dropdown-content" *ngIf="tableofNames.length!=0">
+              <div class="row" *ngFor="let tab of affectationsList">
+                <div class="col-md-8">
+                  <p>{{tab.employee.lastName}} AAAA</p>
+                </div>
+                <div class="col-md-1">
+                  <i class="material-icons" style="color: #990000;cursor: pointer"
+                     (click)="DeleteAffectation(item.idFeedback, tab.employee.id)">remove_circle</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1" (click)="changeVisibility(item.idFeedback)">
+            <i *ngIf="showw[i]&&item.visibiliteFeedback==true" class="material-icons"
+               style="color: #990000;font-size: 20px;cursor: pointer;">vpn_key</i>
+          </div>
+
+          <div class="col-md-1">
+
+            <i (click)="SetEtatProposition(item.idFeedback)"
+               *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='PROPOSITION'&&item.etatFeedback!='retenir'"
+               class="material-icons" style="color: #6c757d;font-size: 20px;cursor: pointer">thumb_up</i>
+
+            <i *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='PROPOSITION'&&item.etatFeedback=='retenir'"
+               class="material-icons" style="color: #004085;font-size: 20px;cursor: pointer">thumb_up</i>
+
+            <i (click)="SetEtatAnomalie(item.idFeedback)"
+               *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='ANOMALIE'&&item.etatFeedback!='confirmer'"
+               class="material-icons" style="color: #6c757d;font-size: 25px;cursor: pointer">done</i>
+
+            <i *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='ANOMALIE'&&item.etatFeedback=='confirmer'"
+               class="material-icons" style="color: #28a745;font-size: 25px;cursor: pointer">done</i>
+
+          </div>
+
+          <div class="col-md-1">
+            <i (click)="SetEtatPropositionRevoir(item.idFeedback)" class="material-icons" *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='PROPOSITION'&&item.etatFeedback!='revoir'"
+               style="color: #6c757d;font-size: 20px;cursor: pointer">thumb_down</i>
+
+            <i  class="material-icons" *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='PROPOSITION'&&item.etatFeedback==='revoir'"
+               style="color: #004085;font-size: 20px;cursor: pointer">thumb_down</i>
+
+            <i (click)="SetEtatAnomalie2(item.idFeedback)" class="material-icons" *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='ANOMALIE'&&item.etatFeedback!='nonconfirmer'"
+               style="color: #6c757d;font-size: 25px;cursor: pointer">clear</i>
+
+            <i  class="material-icons" *ngIf="showw[i]&&item.categorieDTO.typeCategorie=='ANOMALIE'&&item.etatFeedback==='nonconfirmer'"
+                style="color: #e52d27;font-size: 25px;cursor: pointer">clear</i>
+          </div>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngFor="let file of feedbackFile">
+          <a *ngIf="item.idFeedback === file.feedbackDTO.idFeedback"
+             href="http://localhost:8080/FEEDBACK/api/DownloadFile/{{file.path}}">
+            <i *ngIf="showw[i]" class="material-icons" style="color: #17498f;font-size: 20px;cursor: pointer; ">file_download</i>
+          </a>
+        </ng-container>
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
+<div id="allFeedback" class="modal fade" role="dialog">
+  <app-detail-feedback [id]="id" (testRep)="reloadTab($event)"></app-detail-feedback>
+</div>
+<div class="loading" [hidden]="!load">Loading&#8230;</div>
+

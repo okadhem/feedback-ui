@@ -1,0 +1,40 @@
+  <div [class.invisible]='!dataReceived' id="weather" style="margin-top: 1%;    margin-left: 11%;">
+
+
+
+
+  <div id='indicator' [hidden]="dataReceived">
+    <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw " ></i>
+    <span class="sr-only">Loading...</span>
+  </div>
+
+      <div class="table-responsive">
+      <table (click)='getCurrentWeather()' style="width: 29%;">
+        <tr>
+          <td width="50%" height="50%">
+        <canvas id='icon' [hidden]="!dataReceived"></canvas>
+          </td>
+          <td width="50%" height="50%">
+            <p class="font_size noMargin" id='units' >Wind: {{ weatherData.wind | speedUnit: currentSpeedUnit }}</p>
+        <p class="font_size noMargin" >Weather: {{ weatherData.summary }}</p>
+        <p class="font_size noMargin">Humidity: {{ weatherData.humidity | percent }}</p>
+          </td>
+        </tr>
+      </table>
+      </div>
+
+    <div class="row" style="margin-left: 3%;">
+      <div class="col-sm-8">
+        <p class="font_size noMargin"><i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 4%;"></i> {{ currentLocation }}</p>
+    <!--    <div style="    background-color: #c0c0c0;
+    width: 2px;
+    height: 28px;
+    margin-left: 34%;
+    margin-top: -7%;"></div>-->
+      </div>
+
+      <div class="col-sm-4">
+        <p class="font_size noMargin" style="margin-left: -155%;">{{ weatherData.temp | tempUnit: currentTempUnit }}</p>
+      </div>
+    </div>
+</div>

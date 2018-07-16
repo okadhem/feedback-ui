@@ -1,0 +1,40 @@
+
+<div   style="border: #17498e solid 1px;width: 69.35%;height: 77px;background-color: #17498e; margin-left:16%">
+  <br>
+  <div class="row">
+  <span style="color: white;margin-top: 2%;">Listes</span>
+
+    <span style="color: white;margin-top: 2%;font-weight: bold">des Feedbacks</span>
+  </div>
+</div>
+
+<br>
+<div class="col-sm-8 text-left" style="border-left: solid #DDDDDD 1px;margin-top: -1%;
+margin-left: 0%;border-right: #DDDDDD 1px solid">
+  <div id="list-item-1">
+    <app-mes-feedbacks></app-mes-feedbacks>
+  </div>
+
+  <br/><br/>
+  <div id="list-item-2">
+    <app-feedback-publiques></app-feedback-publiques>
+  </div>
+
+  <br/><br/>
+  <div id="list-item-3">
+    <app-avis-list></app-avis-list>
+  </div>
+</div>
+
+
+<div class="col-sm-1 sidenav">
+  <ul class="nav nav-pills nav-stacked" style="position:fixed; text-align:left;">
+    <li [ngClass]="{'activeScroll': mesFeed==true}"><a href="/home/Collaborateur#list-item-1" (click)="mesfeedbacktest()">MES FEEDBACKS</a></li>
+    <li [ngClass]="{'activeScroll': publicfeed==true}"><a href="/home/Collaborateur#list-item-2" (click)="feedbackpub()">FEEDBACK PUBLIQUE</a></li>
+    <li [ngClass]="{'activeScroll': theme==true}"><a href="/home/Collaborateur#list-item-3" (click)="avisclick()">LES AVIS</a></li>
+
+  </ul>
+</div>
+
+
+

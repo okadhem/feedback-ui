@@ -1,0 +1,403 @@
+<button class='pulse-button1' id="btn0" xmlns="http://www.w3.org/1999/html"  onclick="openNav()" (click)="getAllCategories()"><span style="font-size:17px;color: white" class="glyphicon glyphicon-comment"></span>
+</button><a  style="color:#20324a;font-size: 12px;cursor: pointer;text-decoration: none;font-size: 14px;font-family: Calibri;font-weight: bold" (click)="getAllCategories()" onclick="openNav()">Feedback </a>
+<div id="myNav" class="overlay shadow">
+
+  <div style="background-color: #17498e;width: 500px;height: 73px">
+    <br>
+    <span style="color: white;margin-left: 230px;font-size: 15px;margin-top: 10%">Feedback</span><br>
+
+  </div>
+  <div style="width: 50px;height:50px;margin-top: -10%" class="row" (click)="ResetSlide()">
+    <div class="col-md-2">
+    <button class="bouton17" mat-raised-button data-html2canvas-ignore (click)="pdfDownload()" >
+      <i class="material-icons" style="font-size: 33px;color: white" >add_a_photo</i></button></div>
+    <div class="col-md-2">
+    <i class="fas fa-arrow-right"
+       style="     color: white;
+    font-size: 30px;
+    margin-top: -44px;
+    margin-left: 7px;
+    margin-bottom: 45px;"
+       onclick="closeNav()"></i>
+  </div>
+  </div>
+
+  <div class="nav " style="margin-top: 15px;margin-left: 60px">
+    <div class="card" style="margin-left: -46px;font-size: 18px">
+      <ul class="nav nav-tabs" role="tablist" style="margin-left: 40px;margin-right: 0px">
+        <li *ngFor="let cat of Categories; let i = index ;first as isFirst ; last as isLast" role="presentation"
+            style="width: 110px;margin-right: 0px"><a href="#home" (click)="getCategorie(cat.id);resetVisiblity()"
+                                                      aria-controls="home" role="tab" data-toggle="tab"
+                                                      style="font-family: Calibri;font-size: 16px">{{cat.typeCategorie}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br><br>
+  <!--Avis-->
+
+  <div *ngIf="afficherAvis ">
+<div  style=" margin-left: 2%;
+                       margin-right: 2%;" >
+
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header style="border-bottom:#DDDDDD 2px solid;height: 64px;" *ngFor="let theme of themes; let i = index"  dnd-sortable [sortableIndex]="i" dnd-sortable-container [sortableData]="themes">
+          <mat-panel-title (click)="getThemeByID(theme.idThemeAvis)" style="color: #17498e;font-family: Calibri;font-size: 14px">
+            <strong style=" white-space: pre;">{{theme.themeAvis}}</strong>
+          </mat-panel-title>
+          <br>
+          <mat-panel-description style="font-size: 12px;font-family: Calibri;font-weight: bold;    margin-left: -2%;">Expire le {{theme.dateExpiration|date}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <br><br>
+        <div style="width: 108%;margin-left: -4%;" [hidden]="!accordionClose">
+        <span style="font-weight: bold;font-family: Calibri;font-size: 18px;color: #004085;margin-left: 13%">{{clik}}</span><br><br><br>
+          <form #f (ngSubmit)="onSubmit(f);addRating(f);f.reset()" >
+        <app-rating  (messageEvent)="receiveMessage($event)"></app-rating>
+        <mat-form-field>
+          <input matInput placeholder="Commentaire" [(ngModel)]="Avis.contenu" [ngModelOptions]="{standalone: true}">
+        </mat-form-field><br><br>
+        <button type="submit"  class="btn btn-primary byblosButton" style=" margin-left: 23%;" >Soumettre</button>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    <!--  <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Self aware panel
+          </mat-panel-title>
+          <mat-panel-description>
+            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>-->
+    </mat-accordion> <br>
+
+</div>
+   <!-- <div class="container">
+      <div class="section">
+        <div class="block">
+          <div
+            style="font-family: Calibri;font-size: 18px;font-style: italic;margin-left: -5px;border: #6c757d 1px solid;height: 200px;width: 470px;margin-top: -25px">
+            <span style="color: #212529;margin-left: 24px"><strong>Que Penses tu de Byblos ?</strong></span>
+            <br>
+            <div style="margin-left:-22px;margin-top: 50px">
+              &lt;!&ndash;<app-rating (messageEvent)="receiveMessage($event)"></app-rating>&ndash;&gt;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <br>
+
+    <!--<textarea class="form-control" placeholder="Commentaire..."
+              style="width: 470px;margin-left: 11px;font-family:Calibri;font-weight:normal;font-size: 20px"
+              [(ngModel)]="feed.contenuFeedback"
+              [ngModelOptions]="{standalone: true}"></textarea><br>-->
+  <!--  <div style="height: 200px;margin-left: 190px">
+      <button type="submit" (click)="addRating()" class="btn btn-primary byblosButton">envoyer</button>
+    </div>-->
+
+  </div>
+  <!--------------------------------->
+
+  <!--**************************anomalie ***********************-->
+  <div *ngIf="afficherAnomalie">
+
+    <form #f (ngSubmit)="onSubmit(f); addAnomalie(f); f.reset()" >
+      <!-----------visibilité--->
+      <div class="container" style="margin-left: 9%;">
+        <div class="row" >
+          <div class="col-md-2">
+            <label style="font-family: Calibri;font-size: 15px;color: #004085;margin-left: 100px;margin-top: 2px;font-weight: bold">Visibilité :</label><br>
+            <div [ngClass]="{'on': visibilite==false,'off' : visibilite==true}"
+                 class="glyphicon glyphicon-lock" (click)="isVisible()"></div>
+          </div>
+
+          <!---anonymat-->
+
+          <div  class="col-md-2">
+            <label style="font-family: Calibri;font-size: 15px;color: #004085;margin-top: 2px;font-weight: bold">Anonymat :</label><br>
+
+            <div [ngClass]="{'on1': anonymat==true,'off1' : anonymat==false}"
+                 class="glyphicon glyphicon-user"
+                 (click)="isAno()"></div>
+          </div>
+        </div>
+      </div>
+      <br><!------------ProgressBar---------->
+      <div class="container" style="list-style: none">
+        <label class="mat-label"
+               style="margin-top: 0px;color: #17498e;opacity:0.9;font-size: 15px;font-family:Calibri;font-weight:normal;margin-left: 50px">Criticité</label><br><br>
+        <div class="row" style="margin-left: 10px">
+          <div id="y" class="col-md-2"
+               style="width: 130px;height: 20px;background-color: #d6cc0c;border-top-left-radius: 4px;margin-left: 20px;margin-right: -10px;border-bottom-left-radius: 4px">
+            <a onclick="changeColor()" (click)="clic1()"></a></div>
+          <div id="g" class="col-md-2"
+               style="width: 130px;height: 20px;background-color: #DDDD;margin-left: 10px;margin-right: 0px"><a
+            onclick="changeColor2()" (click)="clic2()"></a></div>
+          <div id="r" class="col-md-2"
+               style="width: 130px;height: 20px;background-color: #DDDDDD;border-top-right-radius: 4px;margin-left: 0px;border-bottom-right-radius: 4px">
+            <a onclick="changeColor3()" (click)="clic3()"></a></div>
+        </div>
+      </div>
+      <br>
+      <div class="overlay-content">
+        <div class="container" style="width: 450px;margin-left: 17px">
+          <div class="row">
+            <mat-form-field>
+              <input matInput placeholder="Objet Feedback" [(ngModel)]="feedAnomalie.objetFeedback"  [ngModelOptions]="{standalone: true}" required style="font-size: 14px">
+            </mat-form-field>
+         <!--   <div class="mat-input">
+              <div class="mat-input-outer">
+                <input type="text" autocomplete="off" [(ngModel)]="feed.objetFeedback"
+                       [ngModelOptions]="{standalone: true}" placeholder="Objet Feedback"
+                       style="font-size: 18px;color: #212529" required="required"/>
+
+                <div class="border"></div>
+              </div>
+            </div>-->
+          </div>
+        </div>
+        <br>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="laisser un Commentaire"  [(ngModel)]="feedAnomalie.contenuFeedback"
+                    [ngModelOptions]="{standalone: true}" required style="font-size: 14px"></textarea>
+        </mat-form-field>
+        <!--<textarea class="form-control" placeholder="Commentaire"
+                  style="width: 450px;margin-left: 17px;font-family:Calibri;font-weight:normal;font-size: 18px"
+                  [(ngModel)]="feed.contenuFeedback"
+                  [ngModelOptions]="{standalone: true}"></textarea>-->
+      </div>
+      <br>
+      <!--jointure fichier -------------------------------------------->
+      <div class="container" style="width: 972px">
+        <div class="row">
+          <div class="col-md-6">
+            <form method="post" action="#" id="5">
+              <div class="form-group files">
+                <label style="margin-left: 18px">Upload Your File </label>
+                <input type="file" class="form-control" multiple="" (change)="ajouterDocumentAnomalie($event)">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <form method="post" action="#" id="#0">
+              <div class="form-group files color">
+                <label>Upload Your File here</label>
+                <input type="file" id="file" multiple
+                       (change)="ajouterDocumentAnomalie($event)">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!------------------------------>
+      <br>
+      <div style="margin-left: 90px">
+        <span class="badge badge-info">@Equipe support</span>
+      </div>
+      <br>
+      <div style="height: 200px;margin-left: 190px">
+        <button  type="submit" class="btn btn-primary byblosButton">Soumettre
+        </button>
+      </div>
+    </form>
+  </div>
+  <!--**************************proposition ***********************-->
+  <div *ngIf="afficherProp">
+    <form #prop (ngSubmit)="onSubmit(prop); addProposition(prop); prop.reset()">
+      <div>
+        <!-----------visibilité--->
+        <div class="container" style="margin-left: 9%;">
+        <div class="row" >
+          <div class="col-md-2">
+            <label style="font-family: Calibri;font-size: 15px;color: #004085;margin-left: 100px;margin-top: 2px;font-weight: bold">Visibilité :</label><br>
+            <div [ngClass]="{'on': visibilite==false,'off' : visibilite==true}"
+                 class="glyphicon glyphicon-lock" (click)="isVisible()"></div>
+          </div>
+
+        <!---anonymat-->
+
+          <div  class="col-md-2">
+            <label style="font-family: Calibri;font-size: 15px;color: #004085;margin-top: 2px;font-weight: bold">Anonymat :</label><br>
+
+            <div [ngClass]="{'on1': anonymat==true,'off1' : anonymat==false}"
+                 class="glyphicon glyphicon-user"
+                 (click)="isAno()"></div>
+          </div>
+        </div>
+        </div>
+        <br>
+        <div class="overlay-content">
+          <div class="container" style="width: 450px;margin-left: 17px">
+            <div class="row">
+              <mat-form-field>
+                <input matInput placeholder="Objet Feedback" [(ngModel)]="feed.objetFeedback"  [ngModelOptions]="{standalone: true}" required style="font-size: 14px">
+              </mat-form-field>
+              <!--   <div class="mat-input">
+                   <div class="mat-input-outer">
+                     <input type="text" autocomplete="off" [(ngModel)]="feed.objetFeedback"
+                            [ngModelOptions]="{standalone: true}" placeholder="Objet Feedback"
+                            style="font-size: 18px;color: #212529" required="required"/>
+
+                     <div class="border"></div>
+                   </div>
+                 </div>-->
+            </div>
+          </div>
+          <br>
+          <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="laisser un Commentaire"  [(ngModel)]="feed.contenuFeedback" required style="font-size: 14px"
+                    [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+          <!--<textarea class="form-control" placeholder="Commentaire"
+                    style="width: 450px;margin-left: 17px;font-family:Calibri;font-weight:normal;font-size: 18px"
+                    [(ngModel)]="feed.contenuFeedback"
+                    [ngModelOptions]="{standalone: true}"></textarea>-->
+        </div>
+        <br>
+
+        <!--jointure fichier -------------------------------------------->
+        <div class="container" style="width: 972px">
+          <div class="row">
+            <div class="col-md-6">
+              <form method="post" action="#" id="#7">
+                <div class="form-group files">
+                  <label style="margin-left: 18px">Upload Your File </label>
+                  <input type="file" class="form-control" multiple="" (change)="ajouterDocument($event)">
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <form method="post" action="#" id="#01">
+                <div class="form-group files color">
+                  <label>Upload Your File here </label>
+                  <input type="file" id="file1" multiple
+                         (change)="ajouterDocument($event)">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!------------------------------>
+        <br>
+        <div style="margin-left: 90px">
+          <span class="badge badge-info">@Equipe support</span>
+        </div>
+        <br>
+        <div style="height: 200px;margin-left: 190px">
+          <button type="submit" class="btn btn-primary byblosButton" >Soumettre
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div >
+
+<div id="divScreen" class="overlay shadow" >
+  <div >
+    <img class="screenshot" />
+    <div class="ui-group-buttons" style="margin: 0 auto; display: table;">
+      <button (click)="showForm()" class="btn btn-success"  style="background-color: #17498e"><span class="glyphicon glyphicon-floppy-disk" style="color: #ffffff"></span></button>
+      <div class="or"></div>
+      <button onclick="closeNavScreen()" class="btn btn-danger"  style="background-color: #17498e"><span class="glyphicon glyphicon-trash" style="color: #ffffff"></span></button>
+    </div>
+    <!--<button mat-button style="background-color: rgba(255,255,255,0.3);color: #17498e; font-size: 18px;font-family:Calibri;font-weight: bold;width: 300px " >
+      Joindre cette Capture dans une Anomalie-->
+   <!-- </button>-->
+  </div>
+ <!-- <img class="screenshot" >-->
+</div>
+
+<div [hidden]="!okA" style="background-color: white;
+width: 608px;
+height: 800px;
+position: absolute;
+alignment: center;
+-webkit-box-shadow: -1px 1px 5px 187px rgba(0,0,0,0.51);
+-moz-box-shadow: -1px 1px 5px 187px rgba(0,0,0,0.51);
+box-shadow: 3px 36px 7px 937px rgba(0,0,0,0.51);
+margin-left: -788%; z-index: 10;">
+
+
+
+  <div (click)="closeForm()" style="background-color: #17498e;width: 608px;height: 73px">
+    <br>
+    <span style="color: white;margin-left: 26%;font-size: 15px;margin-top: 10%">Joindre la capture dans une anomalie</span><br>
+    <i class="fas fa-window-close"
+       style="color: white;font-size: 200%;margin-top: -31px;margin-left: 94%;margin-bottom: 30px"
+       ></i>
+  </div>
+  <form #fA (ngSubmit)="onSubmit(fA); add(fA); fA.reset()" >
+    <!-----------visibilité--->
+    <div class="container" style="margin-left: 9%;">
+      <div class="row" >
+        <div class="col-md-2">
+          <label style="font-family: Calibri;font-size: 15px;color: #004085;margin-left: 100px;margin-top: 2px;font-weight: bold">Visibilité :</label><br>
+          <div [ngClass]="{'on': visibilite==false,'off' : visibilite==true}"
+               class="glyphicon glyphicon-lock" (click)="isVisible()"></div>
+        </div>
+
+        <!---anonymat-->
+
+        <div  class="col-md-2">
+          <label style="font-family: Calibri;font-size: 15px;color: #004085;margin-top: 2px;font-weight: bold">Anonymat :</label><br>
+
+          <div [ngClass]="{'on1': anonymat==true,'off1' : anonymat==false}"
+               class="glyphicon glyphicon-user"
+               (click)="isAno()"></div>
+        </div>
+      </div>
+    </div>
+    <br><!------------ProgressBar---------->
+    <div class="container" style="list-style: none">
+      <label class="mat-label"
+             style="margin-top: 0px;color: #17498e;opacity:0.9;font-size: 15px;font-family:Calibri;font-weight:bold;margin-left: 50px">Criticité</label><br><br>
+      <div class="row" style="margin-left: 10px">
+        <div id="yellow" class="col-md-2" onclick="Color12()" (click)="clic1()"
+             style="width: 130px;height: 20px;background-color: #d6cc0c;border-top-left-radius: 4px;margin-left: 20px;margin-right: -10px;border-bottom-left-radius: 4px">
+          <a  ></a></div>
+        <div id="green" class="col-md-2" onclick="Color22()" (click)="clic2()"
+             style="width: 130px;height: 20px;background-color: #DDDD;margin-left: 10px;margin-right: 0px"><a
+           ></a></div>
+        <div id="red1" class="col-md-2" onclick="Color32()" (click)="clic3()"
+             style="width: 130px;height: 20px;background-color: #DDDDDD;border-top-right-radius: 4px;margin-left: 0px;border-bottom-right-radius: 4px">
+          <a  ></a></div>
+      </div>
+    </div>
+    <br>
+    <div class="overlay-content">
+      <div class="container" style="width: 450px;margin-left: 17px">
+        <div class="row">
+          <mat-form-field>
+            <input matInput placeholder="Objet Feedback" [(ngModel)]="FeedbackFileAnomalie.objetFeedback"  [ngModelOptions]="{standalone: true}" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <br>
+      <mat-form-field class="example-full-width" style="margin-left: -19%;">
+          <textarea matInput placeholder="laisser un Commentaire"  [(ngModel)]="FeedbackFileAnomalie.contenuFeedback"
+                    [ngModelOptions]="{standalone: true}" required></textarea>
+      </mat-form-field>
+      <!--<textarea class="form-control" placeholder="Commentaire"
+                style="width: 450px;margin-left: 17px;font-family:Calibri;font-weight:normal;font-size: 18px"
+                [(ngModel)]="feed.contenuFeedback"
+                [ngModelOptions]="{standalone: true}"></textarea>-->
+    </div>
+
+    <div style="margin-left: 90px">
+      <span class="badge badge-info">@Equipe support</span>
+    </div>
+    <br>
+    <div style="height: 200px;margin-left: 190px">
+      <button  type="submit" class="btn btn-primary byblosButton">Soumettre
+      </button>
+    </div>
+  </form>
+</div>

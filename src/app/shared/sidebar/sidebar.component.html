@@ -1,0 +1,27 @@
+
+<img src="../assets/img//femme.jpg"
+     style="border-radius: 50%;width: 50%;horiz-align: center;margin-left:-30%;margin-top: 20%;">
+<h5 class="title" style="align-content: center;margin-left:-30%;color: #20324a">Bonjour</h5>
+<h4 class="title" style="align-content: center;margin-left:-20% ;color: #20324a"><strong>AAAA {{name}}</strong></h4>
+<div id="demo1">
+  <ul id="service1" class="sub-menu collapse">
+    <strong>
+      <li><a href="#" style="color: #20324a">Ma fiche RH</a></li>
+      <li><a href="#" routerLink="/" style="color: #20324a">Menu 1</a></li>
+      <li><a href="#" style="color: #20324a">Menu 2</a></li>
+      <li><a href="#" style="color: #20324a">Menu 3</a></li>
+    </strong>
+  </ul>
+</div>
+<div class='hotspot'>
+  <div class="button-wrap">
+    <button class='pulse-button' id="btn1" data-toggle="collapse" data-target="#service1">+</button>
+  </div>
+</div>
+
+<ul class="nav navbar-nav" style="margin-left: -7%;">
+  <li class="active" style="background-color: #17498e;color: white;width: 90%;height: 30%;border:white solid 2px "><a routerLink="/home/Collaborateur" style="color: white" (click)="feedbackPage()"><span style="font-size:16px;color: white" class="glyphicon glyphicon-comment"></span> Feedback</a></li>
+
+  <li class="active" style="background-color: #17498e;color: white;width: 90%;height: 30%;border:white solid 2px" ><a href="#" style="color: white" routerLink="/home/Dashboard"><i style="font-size: 18px" class="fas fa-chart-pie"></i> Statistique Feedback</a></li>
+
+</ul>

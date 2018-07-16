@@ -1,0 +1,75 @@
+<div class="container" style="background-color: #f6f6f6;
+height: 17%;
+border: #DDDDDD solid 1px;
+width: 102.8%;
+margin-left: -1.4%;
+margin-top: 0.5%;">
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <strong> <span  style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085"> Les Feedbacks personnels</span></strong>
+    </div>
+  <div class="col-md-3">
+    <strong> <span  style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085"> Mes Feedbacks</span></strong>
+    <br>
+    <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{Feedbacks.length}}</span></strong>
+  </div>
+    <div class="col-md-3">
+      <strong> <span   style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085"> Mes Feedbacks traités</span></strong>
+      <br>
+      <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{feedWithRep.length}}</span></strong>
+    </div>
+  </div>
+</div>
+<table *ngIf="Feedbacks.length>0&&readyMesFeedback" datatable class="table table-hover" [dtOptions]="dtOptions">
+  <thead style="background-color: #ffffff">
+  <tr style="height: 70px">
+    <th>Objet Feedback</th>
+    <th>Categorie</th>
+    <th>Date envoi</th>
+    <th>Réponse</th>
+    <th></th>
+    <th> </th>
+  </tr>
+  </thead>
+  <tbody style="font-family: Calibri;color: #6c757d;font-weight: bold;">
+  <tr *ngFor="let item of Feedbacks ;let i = index" (click)="tableEvent(item)" (mouseover)="show(i)" (mouseleave)="dontshow(i)">
+    <td data-toggle="modal" data-target="#myModalmes" style="cursor: pointer">{{item.objetFeedback}}</td>
+    <td data-toggle="modal" data-target="#myModalmes" style="cursor: pointer">{{item.categorieDTO.typeCategorie}}</td>
+    <td data-toggle="modal" data-target="#myModalmes" style="cursor: pointer" >{{item.dateCreation |  date }}</td>
+    <td>
+      <ng-container *ngFor="let nb of repFeedback" >
+        <a data-toggle="modal" data-target="#myModalmes" *ngIf="item.idFeedback === nb.feedbackDTO"  [hidden]="repFeedback.length==0">
+
+          <i class="material-icons" style="color: #71c2ab;font-size: 15px;cursor: pointer;">insert_comment</i>
+
+          <span style="cursor: auto;text-decoration: none;font-size: 18px"  >{{nb.nbrRep}}</span>
+        </a>
+      </ng-container>
+
+    </td>
+    <td>
+      <div class="row">
+        <div class="col-md-2">
+          <i *ngIf="item.visibiliteFeedback==true" style="color: #17498f;font-size: 20px" class="material-icons">public</i>
+          <i *ngIf="item.visibiliteFeedback==false" style="color: #17498f;font-size: 20px" class="material-icons">lock</i>
+        </div>
+      </div>
+      </td>
+    <td>
+      <ng-container *ngFor="let file of feedbackFile">
+        <a *ngIf="item.idFeedback === file.feedbackDTO.idFeedback"
+           href="http://localhost:8080/FEEDBACK/api/DownloadFile/{{file.path}}">
+          <i *ngIf="showw[i]" class="material-icons" style="color: #17498f;font-size: 20px;cursor: pointer; ">file_download</i>
+        </a>
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div id="myModalmes" class="modal fade" role="dialog">
+  <app-detail-feedback [id]="id" (testRep)="reloadTab($event)"></app-detail-feedback>
+</div>
+
+<div class="loading" [hidden]="!load" >Loading&#8230;</div>

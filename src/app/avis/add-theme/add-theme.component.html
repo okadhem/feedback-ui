@@ -1,0 +1,49 @@
+
+<form (ngSubmit)="submit()">
+  <div class="form-group">
+         <textarea class="form-control" id="testText" name="testText" [(ngModel)]="themeAdd.themeAvis" #testText="ngModel" rows="3"
+                   placeholder="Ajouter un nouveau Theme..."></textarea>
+    <br/>
+    <div class="row" style="margin-left: 40%">
+      <div class="col-xs-12 col-12 col-md-4 form-group" style="color:#17498E;font-size:16px">
+        <!--<i class="fas fa-calendar-alt"></i>-->
+        <!--<input  type="text" placeholder="Date d'expiration " class="form-control"  id="testDate" name="testDate" [(ngModel)]="themeAdd.dateExpiration" #testDate="ngModel" bsDatepicker >-->
+
+
+        <mat-form-field style="    margin-left: -119%;
+    width: 288%;">
+          <input matInput [matDatepicker]="picker" placeholder="Date d'expiration" id="testDate" name="testDate" [(ngModel)]="themeAdd.dateExpiration" #testDate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+
+
+
+
+    </div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <!--<input type="submit" value="Annuler" style="margin-left: 40%" mat-raised-button color="primary">-->
+    <button class="btn btn-primary"  style="align-content: center;
+    margin-left:1%;
+    width: 167px;
+    background-color: #004085;
+    color: white;
+    border-radius: 10px;" (click)="onNoClick()">Annuler</button>
+  </div>
+ <div class="col-md-4">
+   <button class="btn btn-primary" type="submit"  style="    align-content: center;
+    margin-left:1%;
+    width: 167px;
+    background-color: #004085;
+    color: white;
+    border-radius: 10px;">Soumettre</button>
+  <!-- <input type="submit" value="Soumettre" style="margin-left: 40%;background-color: #004085;color: white" mat-raised-button color="primary">-->
+ </div>
+</div>
+
+  </div>
+</form>

@@ -1,0 +1,75 @@
+.meteo {
+  padding-top: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  width: 20%;
+  height: 20%;
+}
+:host>>>.mat-toolbar-multiple-rows{
+  min-height: 218px;
+}
+.logo {
+  width: 100%;
+  height: auto;
+
+}
+
+.sidebar{
+  background-color:#17498E;
+  color:white;
+  font-family:Calibri;
+
+
+}
+.navbar-nav{
+  color:#6f7b89;
+  font-family:Calibri;
+  font-size: 15px;
+
+
+}
+.center{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+div.a {
+  font-family: "Calibri";
+  font-weight:normal;
+
+}
+.nav-link{
+  color:white;
+  font-family:Calibri;
+
+}
+
+mat-panel-title{
+
+  color:white;
+  font-family:Calibri;
+}
+mat-expansion-panel{
+  background-color:#17498E;
+  color:white;
+  font-family:Calibri;
+
+}
+
+h6, b{
+  color:white;
+  font-family:Calibri;
+}
+
+
+.meteo {
+  padding-top: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  width: 20%;
+  height: 20%;
+}
+
+img{
+  max-width: 100% !important;
+}

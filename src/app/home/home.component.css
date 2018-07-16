@@ -1,0 +1,166 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #ffffff;
+  color: black;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+:host>>>.navbar-inverse{
+  background-color: transparent;
+  border:transparent
+}
+:host>>>.nav-side-menu ul .active, .nav-side-menu li{
+  border-left: transparent;
+}
+.btn{ background-color : white ; border-radius: 0% ; color: rgb(23, 73, 142) ;border: solid 1px rgb(23, 73, 142) }
+.btn:target{background-color: #6188e2}
+.btn:hover{background-color: rgb(23, 73, 142); color:white }
+.drop{color: black;font-size: small}
+:host >>>select.form-control:not([size]):not([multiple]) {
+  height: 40px;
+}
+.badge {background: #6188e2 ; font-size:13px ; border-radius: 2%}
+.ano {background: #0c2646}
+.perso{ background-color : rgb(23, 73, 142) ; border-radius: 0% ; color: white ;border: solid 1px white}
+.perso:hover{background-color:#204065; color: white }
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 20px;
+  color: white;
+}
+#myNav{
+  background-color: rgba(255, 255, 255, .95);
+}
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#header{
+  background-color: rgba(23, 73, 142, .9);
+
+}
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+.my-drop-zone { border: dotted 3px lightgray; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px #6188e2; width: 50% }
+html, body { height: 100%; }
+
+
+
+.label-file {
+
+}
+:host >>>.progress{
+  width: 120%;
+  margin-left: 20px;
+  color: #6188e2;
+}
+
+.content-center1{
+
+}
+.canvas__container {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.canvas__canvas {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.canvas__mirror {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.bouton17 {
+  width:50px;
+  height:50px;
+  background:#fafafa;
+  box-shadow:2px 2px 8px #aaa;
+  font:bold 13px Arial;
+  border-radius:50%;
+  color:#ffffff;
+  background-color: #204065;
+}
+:host>>>.list-group-item{
+  background-color: white;
+  border-left: white solid 3px;
+  border-top: white solid 3px;
+  border-bottom: white solid 3px;
+}
+

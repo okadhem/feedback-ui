@@ -1,0 +1,295 @@
+<!-- Modal -->
+
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+
+  <div class="modal-content" style="" >
+    <div class="modal-header" style="background-color:#17498f">
+      <button type="button" class="close" data-dismiss="modal" (click)="refreshPage()">&times;</button>
+      <h4 class="modal-title" style="color:white; text-align:center;">
+        <span class="font-weight-light">Feedback</span>
+        <br><br>
+      </h4>
+    </div>
+    <div class="modal-body">
+
+      <!-- Workflow --------------------------->
+      <!--------------------------------------->
+      <div class="steps-form-2" style="margin-top: 12px;margin-left: 29%" >
+
+        <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+          <div class="steps-step-2">
+            <a type="button" class="btn btn-amber sent waves-effect ml-0" data-toggle="tooltip" data-placement="top"
+               title="Envoyé le {{feedbackDetail?.dateCreation| date: 'short'}}" style="margin-left: -91%;">
+              <i style="cursor: pointer;color:white;font-size: 28px;margin-left: -71%;margin-top: -105%"
+                 class="material-icons">send</i></a>
+            <p style="margin-left: -103%;font-weight: bold;color:#c7cacb;font-size: 11px ">Envoyé le
+              {{feedbackDetail?.dateCreation| date: "short"}}</p>
+          </div>
+
+          <div class="steps-step-2">
+
+            <a
+              *ngIf="feedbackDetail?.etatFeedback !== 'affecte' && feedbackDetail?.etatFeedback !== 'retenir' &&  feedbackDetail?.etatFeedback !== 'revoir' && feedbackDetail?.etatFeedback !== 'confirmer'&& feedbackDetail?.etatFeedback !== 'nonconfirmer' && feedbackDetail?.etatFeedback !== 'resolu'"
+              style="margin-left: -201%;" class="btn btn-blue-grey btn-circle-2 waves-effect" type="button"
+              data-toggle="tooltip" data-placement="top" title="En attente"> <i
+              *ngIf="feedbackDetail?.etatFeedback !== 'affecte' && feedbackDetail?.etatFeedback !== 'retenir'"
+              style="cursor: pointer;color: white;font-size: 30px;margin-left: -81%;margin-top: -105%"
+              class="material-icons">done</i>
+            </a>
+
+            <a
+              *ngIf="feedbackDetail?.etatFeedback === 'affecte' || feedbackDetail?.etatFeedback === 'retenir' || feedbackDetail?.etatFeedback === 'revoir' || feedbackDetail?.etatFeedback === 'confirmer'|| feedbackDetail?.etatFeedback === 'nonconfirmer' || feedbackDetail?.etatFeedback === 'resolu'"
+              style="margin-left: -10%;" class="btn btn-amber wait waves-effect ml-0" type="button"
+              data-toggle="tooltip" data-placement="top" title="Affecté ">
+              <i
+                *ngIf="feedbackDetail?.etatFeedback == 'affecte'|| feedbackDetail?.etatFeedback == 'retenir'|| feedbackDetail?.etatFeedback === 'revoir'  || feedbackDetail?.etatFeedback === 'confirmer'|| feedbackDetail?.etatFeedback === 'nonconfirmer' || feedbackDetail?.etatFeedback === 'resolu'"
+                style="cursor: pointer;color:white;font-size: 28px;margin-left: -90%;margin-top: -105%"
+                class="material-icons">done</i></a>
+            <p *ngFor="let f of affectationsList" style=";font-weight: bold;color: #c7cacb;font-size: 10px ">
+              Affecté à {{f.employee.firstName }} {{f.employee.lastName}} le
+              {{f.dateCreation| date: "short" }} </p>
+
+          </div>
+
+
+          <div class="steps-step-2">
+
+            <a *ngIf="feedbackDetail?.etatFeedback==='revoir'" type="button"
+               class="btn btn-blue-grey revoir waves-effect mr-0" data-toggle="tooltip" data-placement="top"
+               title="A Revoir" style=" margin-left: 40%;"><i *ngIf="feedbackDetail?.etatFeedback==='revoir'"
+                                                              class="material-icons"
+                                                              style="cursor: pointer;color:white;font-size: 28px;margin-left: -71%;margin-top: -105%">archive</i></a>
+            <p *ngIf="feedbackDetail?.etatFeedback == 'revoir'"
+               style=";font-weight: bold;color:#c7cacb;font-size: 10px;margin-left: 38% ">Merci Votre
+              Proposition est à Revoir </p>
+          </div>
+
+          <!--
+                 <div class="steps-step-2">
+                     <a *ngIf="feedbackDetail?.etatFeedback!=='revoir'" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Terms and Conditions"><i *ngIf="feedbackDetail?.etatFeedback!=='revoir'" class="material-icons" style="cursor: pointer;color:rgb(78, 100, 131);font-size: 28px">archive</i></a>
+                   </div>-->
+
+
+          <div class="steps-step-2">
+
+            <a *ngIf="feedbackDetail?.etatFeedback === 'retenir'" style="margin-left: 56%;" type="button"
+               class="btn btn-blue-grey retenirFeedback waves-effect mr-0" data-toggle="tooltip" data-placement="top"
+               title="à retenir"><i
+              style="font-weight: bold;font-size: 28px;color: white;margin-left: -71%;margin-top: -105%"
+              class="fa fa-check" aria-hidden="true"></i>
+
+            </a>
+
+            <p *ngIf="feedbackDetail?.etatFeedback == 'retenir'"
+               style=";font-weight: bold;color: #c7cacb;font-size: 10px;margin-left: 50%;">Merci Votre
+              Proposition est à Retenir </p>
+
+            <a
+              *ngIf="feedbackDetail?.etatFeedback !== 'revoir' && feedbackDetail?.etatFeedback !== 'retenir' && feedbackDetail?.etatFeedback !== 'nonconfirmer' && feedbackDetail?.etatFeedback !== 'confirmer'&& feedbackDetail?.etatFeedback !== 'resolu'"
+              style="margin-left: 31%;" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0"
+              data-toggle="tooltip" data-placement="top" title="">
+              <i
+                style="font-weight: bold;font-size: 28px;margin-left: -71%;margin-top: -105%" class="fas fa-question"
+                aria-hidden="true"></i>
+            </a>
+
+          </div>
+
+
+          <!--Anomalie Workflowww-->
+
+
+          <div class="steps-step-2">
+
+            <a *ngIf="feedbackDetail?.etatFeedback === 'confirmer' || feedbackDetail?.etatFeedback === 'resolu'"
+               style="margin-left: 11%;" type="button"
+               class="btn btn-blue-grey confirmer waves-effect mr-0" data-toggle="tooltip" data-placement="top"
+               title="confirmer">
+              <i *ngIf="feedbackDetail?.etatFeedback==='confirmer'|| feedbackDetail?.etatFeedback === 'resolu'"
+                 class="material-icons"
+                 style="cursor: pointer;color:white;font-size: 28px;margin-left: -71%;margin-top: -105%">timeline</i>
+
+            </a>
+
+            <p *ngIf="feedbackDetail?.etatFeedback == 'confirmer'|| feedbackDetail?.etatFeedback === 'resolu'"
+               style=";font-weight: bold;color: #c7cacb;font-size: 10px;margin-left: 14%;">Votre Anomalie est
+              prise en consédération et en cours de traitement </p>
+
+            <a *ngIf="feedbackDetail?.etatFeedback==='nonconfirmer'" style="margin-left: 50%;" type="button"
+               class="btn btn-blue-grey nonconfiermer waves-effect mr-0"
+               data-toggle="tooltip" data-placement="top" title="non confirmer">
+              <i *ngIf="feedbackDetail?.etatFeedback==='nonconfirmer'"
+                 class="material-icons"
+                 style="cursor: pointer;color:white;font-size: 28px;margin-left: -85%;margin-top: -105%">error_outline</i>
+            </a>
+            <p *ngIf="feedbackDetail?.etatFeedback == 'nonconfirmer'"
+               style=";font-weight: bold;color: #c7cacb;font-size: 10px;margin-left: 50%;"> Votre cas ne
+              s'agit pas d'une Anomalie </p>
+          </div>
+          <div class="steps-step-2">
+
+            <a *ngIf="feedbackDetail?.etatFeedback === 'resolu'" style="margin-left: 10%;" type="button"
+               class="btn btn-blue-grey resolu waves-effect mr-0" data-toggle="tooltip" data-placement="top"
+               title="resolu">
+              <i *ngIf="feedbackDetail?.etatFeedback==='resolu'"
+                 class="material-icons"
+                 style="cursor: pointer;color:white;font-size: 28px;margin-left: -71%;margin-top: -105%">done_all</i>
+
+            </a>
+            <p *ngIf="feedbackDetail?.etatFeedback == 'resolu'"
+               style=";font-weight: bold;color:#c7cacb;font-size: 10px;margin-left: 14%;">Votre Anomalie est
+              résolu </p>
+
+          </div>
+
+          <!--//////////*********************************************//////////-->
+
+          <div class="steps-step-2">
+
+            <a *ngIf="feedbackDetail?.etatFeedback === 'confirmer'" style="margin-left: 10%;" type="button"
+               class="btn btn-blue-grey wait waves-effect mr-0" data-toggle="tooltip" data-placement="top"
+               title="en phase de traitement ">
+              <i *ngIf="feedbackDetail?.etatFeedback==='confirmer'"
+                 class="material-icons"
+                 style="cursor: pointer;color:white;font-size: 28px;margin-left: -71%;margin-top: -105%">done_all</i>
+
+            </a>
+          <!--  <p *ngIf="feedbackDetail?.etatFeedback == 'confirmer'"
+               style=";font-weight: bold;color: rgb(78, 100, 131);font-size: 10px;margin-left: 14%;">Merci
+              d'attendre </p>
+-->
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <!--////////////////////////////////////////////////-->
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="container">
+              <img src="../assets/img/homme.jpg" alt="Avatar" style="width:100%;"
+                   *ngIf="feedbackDetail?.employee.civilityId==1">
+              <img src="../assets/img/femme.jpg" alt="Avatar" style="width:100%;"
+                   *ngIf="feedbackDetail?.employee.civilityId!==1">
+              <h5>{{feedbackDetail?.employee.lastName}} AAAA</h5>
+
+              <p style="font-weight: bold;font-family: Calibri;font-size: 20px;color: #17498f"> Objet du Feedback
+                :{{feedbackDetail?.objetFeedback}}</p>
+              <p style="font-weight: normal;color: #17498f;font-size: 18px;font-family: Calibri;margin-left: 10%">
+                {{feedbackDetail?.contenuFeedback}}</p>
+              <span class="time-right">Ajouté le :{{feedbackDetail?.dateCreation| date: "short"}}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4>{{reponse?.length}} réponses</h4>
+            <ng-container *ngIf="rout  === '/home/Support'">
+            <div class="nav" style="    margin-left: 48%;"
+                 *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='ANOMALIE'">
+
+
+              <button
+                [ngClass]="{'actionFeedback': feedbackDetail?.etatFeedback!=='resolu','doneAll' : feedbackDetail?.etatFeedback=='resolu'}"
+                *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='ANOMALIE'"
+                (click)="setAnomalieResolu(feedbackDetail?.idFeedback)"
+                [disabled]="feedbackDetail?.etatFeedback=='resolu' || feedbackDetail?.etatFeedback=='affecte' || feedbackDetail?.etatFeedback=='non traite' || feedbackDetail?.etatFeedback=='nonconfirmer'"><i class="material-icons" style=";    font-size: 19px;
+    margin-left: -59%;
+    margin-top: -47%;" title="Mise en Prod">done_all</i></button>
+              <button class="actionFeedback" style="    margin-left: 0%;"
+                      *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='ANOMALIE'"><i class="material-icons" style=";    font-size: 19px;
+    margin-left: -59%;
+    margin-top: -47%;" title="Mise en Prod">done</i></button>
+              <button class="actionFeedback" style="    margin-left: 0%;"
+                      *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='ANOMALIE'"><i class="material-icons" style="    font-size: 19px;
+    margin-left: -59%;
+    margin-top: -47%;" title="Mise en Prod">clear</i></button>
+              <button class="actionFeedback" *ngIf="feedbackDetail?.visibiliteFeedback==true" style="margin-left: 0%"><i
+                class="material-icons" style=";    font-size: 19px;
+    margin-left: -59%;
+    margin-top: -47%;" title="Mise en Prod">vpn_key</i></button>
+            </div>
+
+            <div class="nav"
+                 *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='PROPOSITION' ">
+
+              <button class="actionFeedback" style="        margin-left: 89%;"
+                      *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='PROPOSITION'"><i class="material-icons"
+                                                                                            style=";    font-size: 19px;
+    margin-left: -59%;
+    margin-top: -47%;" title="Proposition à Retenir">thumb_up</i></button>
+              <button class="actionFeedback" style="    margin-left: 0%;"
+                      *ngIf="feedbackDetail?.categorieDTO.typeCategorie =='PROPOSITION'"><i class="material-icons"
+                                                                                            style=";    font-size: 19px;
+    margin-left: -109%;
+    margin-top: -47%;" title="Proposition à Revoir">thumb_down</i></button>
+
+              <button class="actionFeedback" *ngIf="feedbackDetail?.visibiliteFeedback==true" style="margin-left: 0%"><i
+                class="material-icons" style=";    font-size: 19px;
+    margin-left: -59%;
+    margin-top: -47%;" title="vérrouiller ce Feedback">vpn_key</i></button>
+            </div>
+            </ng-container>
+            <ng-container *ngFor="let item of reponse">
+
+              <div class="container" *ngIf="item?.employe.lastName !== nameConnected && ready">
+                <img src="../assets/img/homme.jpg" alt="Avatar" style="width:100%;"
+                     *ngIf="feedbackDetail?.employee.civilityId==1">
+                <img src="../assets/img/femme.jpg" alt="Avatar" style="width:100%;"
+                     *ngIf="feedbackDetail?.employee.civilityId!==1">
+                <h5> AAAA {{item?.employe.lastName}}</h5>
+                <p style=" white-space: pre;">{{item?.reponse}}</p>
+                <span class="time-right">Commenté le :{{item?.dateCreation| date: "short"}}</span>
+              </div>
+
+              <div class="container" *ngIf="item?.employe.lastName === nameConnected && ready ">
+                <img src="../assets/img/homme.jpg" alt="Avatar" style="width:100%; margin-left: 93%"
+                     *ngIf="feedbackDetail?.employee.civilityId==1">
+                <img src="../assets/img/femme.jpg" alt="Avatar" style="width:100%; margin-left: 93%"
+                     *ngIf="feedbackDetail?.employee.civilityId!==1">
+                <h5 style="    margin-left: 78%; ">AAAA {{item?.employe.lastName}} </h5>
+                <p style="text-align: right; white-space: pre;">{{item?.reponse}}</p>
+                <span class="time-left">Commenté le :{{item?.dateCreation| date: "short"}}</span>
+              </div>
+
+            </ng-container>
+
+          </div>
+        </div>
+      </div>
+
+      <!--Reponse -->
+
+      <form #f (ngSubmit)="submit()">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                 <textarea class="form-control" id="te stText" name="testText" [(ngModel)]="name"
+                           #testText="ngModel"
+                           rows="3" placeholder="Ajouter une reponse..." required style="width: 196%"></textarea>
+                <br/>
+                <input [disabled]="!f.checkValidity()" type="submit" value="Soumettre">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!---->
+
+    </div>
+    <div class="modal-footer" style="height: 30%">
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,76 @@
+
+<div class="container" style="background-color: #f6f6f6;
+height: 17%;
+border: #DDDDDD solid 1px;
+width: 102.8%;
+margin-left: -1.4%;
+margin-top: 0.5%;">
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+
+      <strong> <span   style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085">Les Themes d'avis</span></strong>
+
+
+
+    </div>
+
+  <div class="col-md-3">
+    <strong> <span   style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085">Themes d'avis</span></strong>
+    <br>
+    <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{themes1.length}}</span></strong>
+
+  </div>
+  <div class="col-md-4">
+    <strong> <span  style="font-family: Calibri;font-size: 16px;font-style: italic;color: #004085">Nombre des participants</span></strong>
+    <br>
+    <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;">{{nbParticipant}}</span></strong>
+    <strong> <span style="color: #efbc00;font-size: 36px;font-family: Calibri;margin-left: 15%;" *ngIf="nbParticipant===null">0</span></strong>
+  </div>
+    <div class="col-md-2">
+      <div  data-toggle="modal" data-target="#addTheme" (click)="openDialog()" *ngIf="route === '/home/Support' || route === '/home/Support#list-item-4'">
+        <i class="material-icons" style="font-size: 35px;
+    color: #004085;cursor: pointer">
+          add_circle
+        </i>
+      </div>
+    </div>
+
+</div>
+</div>
+<table *ngIf="themes1.length>0 && ready" datatable class="table table-hover" [dtOptions]="dtOptions">
+  <thead style="background-color: #ffffff">
+  <tr style="height: 70px">
+
+    <th>Theme Feedback</th>
+    <th>Moyenne par Theme</th>
+    <th>Date Expiration </th>
+    <th *ngIf="route=== '/home/Support' || route==='/home/Support#list-item-4' "></th>
+  </tr>
+  </thead>
+  <tbody style="font-family: Calibri;color: #6c757d;font-weight: bold;">
+  <tr *ngFor="let item of themes1 ; let i = index  " (click)="tableEvent(item)"   (mouseover)="show(i)" (mouseleave)="dontshow(i)">
+    <td scope="row" data-toggle="modal" data-target="#allAvis"  >{{item.themeAvis}}</td>
+    <td data-toggle="modal" data-target="#allAvis" >
+       <rating [ngModel]="item.moyenne" [max]="5" [readonly]="true" style="font: bold 20px/20px Georgia, serif"></rating>{{item.moyenne| number:'1.1-2'}}
+    </td>
+    <td data-toggle="modal" data-target="#allAvis" >{{item.dateExpiration|  date: "short"}}</td>
+<td *ngIf="route=== '/home/Support' || route==='/home/Support#list-item-4' "> <i *ngIf="showw[i] && item.moyenne===0" class="material-icons" style="color: #990000;font-size: 25px;cursor: pointer; "
+        (click)="DeleteTheme(item.idThemeAvis)">delete_sweep</i></td>
+  </tr>
+  </tbody>
+<!--
+ <button *ngIf="rout !== '/home/Collaborateur'"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTheme" (click)="openDialog()" style="margin: 0 auto; display:table; background:#2e5797;">
+    Ajouter un nouveau thème
+  </button>
+-->
+
+<br>
+</table>
+<br>
+
+<div id="allAvis" class="modal fade" role="dialog">
+  <app-detail-avis [id]="id" [obj]="objet"></app-detail-avis>
+</div>
+
+<!--     Add un nouveau theme  -->

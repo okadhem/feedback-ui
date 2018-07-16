@@ -1,0 +1,37 @@
+<div class="row">
+
+
+  <fieldset class="rate">
+    <input id="rate2-star5" type="radio" name="rate2" value="5" #five (click)="getScore(five.value)"/>
+    <label for="rate2-star5" title="Awesome">5</label>
+
+
+    <input #four1 id="rate2-star5-half" type="radio" name="rate2" value="4.5" (click)="getScore(four1.value)"/>
+    <label class="star-half" for="rate2-star5-half" title="Excellent">4.5</label>
+
+    <input #four id="rate2-star4" type="radio" name="rate2" value="4" (click)="getScore(four.value)"/>
+    <label for="rate2-star4" title="Very good">4</label>
+
+    <input #three1 id="rate2-star3-half" type="radio" name="rate2" value="3.5" (click)="getScore(three1.value)"/>
+    <label class="star-half" for="rate2-star3-half" title="Good">3.5</label>
+
+    <input #three id="rate2-star3" type="radio" name="rate2" value="3" (click)="getScore(three.value)"/>
+    <label for="rate2-star3" title="Satisfactory">3</label>
+
+    <input #two1 id="rate2-star2-half" type="radio" name="rate2" value="2.5" (click)="getScore(two1.value)"/>
+    <label class="star-half" for="rate2-star2-half" title="Unsatisfactory">2.5</label>
+
+    <input #two id="rate2-star2" type="radio" name="rate2" value="2" (click)="getScore(two.value)"/>
+    <label for="rate2-star2" title="Bad">2</label>
+
+    <input #one1 id="rate2-star1-half" type="radio" name="rate2" value="1.5" (click)="getScore(one1.value)"/>
+    <label class="star-half" for="rate2-star1-half" title="Very bad">1.5</label>
+
+    <input #one id="rate2-star1" type="radio" name="rate2" value="1" (click)="getScore(one.value)"/>
+    <label for="rate2-star1" title="Awful">1</label>
+
+    <input #half id="rate2-star0-half" type="radio" name="rate2" value="0.5" (click)="getScore(half.value)"/>
+    <label class="star-half" for="rate2-star0-half" title="Horrific">0.5</label>
+
+  </fieldset>
+</div>

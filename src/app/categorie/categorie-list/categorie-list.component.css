@@ -1,0 +1,598 @@
+.btn {
+  background-color: white;
+  border-radius: 0%;
+  color: rgb(23, 73, 142);
+  border: #6188e2 solid 1px;
+  font-size: 15px
+}
+
+.byblosButton {
+  background-color: #17498e;
+  color: #ffffff;
+  height: 35px;
+  width: 250px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-left: -76px
+}
+
+.btn:target {
+  background-color: #6188e2
+}
+
+/*.btn:hover {*/
+/*background-color: white;*/
+/*color: rgb(23, 73, 142);*/
+/*text-underline-color: #6188e2;*/
+/*text-underline: 2px*/
+/*}*/
+
+.drop {
+  color: black;
+  font-size: small
+}
+
+:host > > > select.form-control:not([size]):not([multiple]) {
+  height: 40px;
+}
+
+.badge {
+  background: #6188e2;
+  font-size: 13px;
+  border-radius: 2%;
+  margin-left: 84px;
+}
+
+.ano {
+  background: #0c2646
+}
+
+.perso {
+  background-color: rgb(23, 73, 142);
+  border-radius: 0%;
+  color: white;
+  border: solid 1px white
+}
+
+.perso:hover {
+  background-color: #204065;
+  color: white
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.overlayS {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 20px;
+  color: white;
+}
+
+#myNav {
+  background-color: rgba(255, 255, 255, .9);
+}
+#divScreen{
+  background-color: transparent;
+  -webkit-box-shadow: -800px 0px 0px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: -800px 0px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: -800px 0px 0px 0px rgba(0,0,0,0.5);
+}
+
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#header {
+  background-color: rgba(23, 73, 142, .9);
+
+}
+.boutonAbs{
+
+}
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.my-drop-zone {
+  border: dotted 3px lightgray;
+}
+
+.nv-file-over {
+  border: dotted 3px red;
+}
+
+/* Default class applied to drop zones on over */
+.another-file-over-class {
+  border: dotted 3px #6188e2;
+  width: 50%
+}
+
+html, body {
+  height: 100%;
+}
+
+.label-file {
+
+}
+
+:host > > > .progress {
+  width: 120%;
+  margin-left: 20px;
+  color: #6188e2;
+}
+
+.bouton {
+  width: 100px;
+  height: 50px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.form-group input[type="checkbox"] {
+  display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+  width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+  display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+  display: inline-block;
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+  display: inline-block;
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+  display: none;
+}
+
+.content-center1 {
+
+}
+
+.nav-tabs {
+  border-bottom: 2px solid #cfd2d6;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  border-width: 0;
+}
+
+.nav-tabs > li > a {
+  border: none;
+  color: #666;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+  border: none;
+  color: #2a5788 !important;
+  background: transparent;
+}
+
+.nav-tabs > li > a::after {
+  content: "";
+  background: #2a5788;
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  transition: all 250ms ease 0s;
+  transform: scale(0);
+}
+
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+  transform: scale(1);
+}
+
+.tab-nav > li > a::after {
+  background: #21527d none repeat scroll 0% 0%;
+  color: #fff;
+}
+
+.tab-pane {
+  padding: 15px 0;
+}
+
+.tab-content {
+  padding: 20px
+}
+
+.card {
+  background: #FFF none repeat scroll 0% 0%;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0);
+  margin-bottom: 30px;
+}
+
+body {
+  background: #EDECEC;
+  padding: 50px
+}
+
+:host > > > .overlay[_ngcontent-c4] a[_ngcontent-c4] {
+  font-size: 18px;
+}
+
+:host > > > .mat-input-outer[_ngcontent-c4] label[_ngcontent-c4] {
+  font-size: 15px;
+  font-style: normal;
+}
+
+.mat-input {
+  margin: 2% auto;
+  width: 50%;
+}
+
+.mat-input-outer {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+
+.mat-input-outer input {
+  height: 50px;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  padding: 0 15px;
+  font-family: calibri;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.mat-input-outer label {
+  font-family: calibri;
+  font-size: 20px;
+  left: 15px;
+  position: absolute;
+  top: 18px;
+  font-style: italic;
+  transition: .2s;
+  color: #000;
+  cursor: text;
+  font-weight: normal;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+.mat-input-outer .border {
+  height: 1px;
+  background: #DDDDDD;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -ms-transition: .3s;
+}
+
+.mat-input-outer .border::before {
+  content: " ";
+  display: table;
+  height: 3px;
+  width: 0%;
+  background: transparent;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -ms-transition: .3s;
+  margin: 0 auto;
+}
+
+.mat-input-outer input:focus ~ .border {
+  background: transparent;
+}
+
+.mat-input-outer input:focus ~ .border::before {
+  width: 100%;
+  background-color: #17498e;
+}
+
+.mat-input-outer input + label.active {
+  left: 5px;
+  top: -25px;
+  color: #17498e;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.wrap {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.mat-label {
+  display: block;
+  font-size: 18px;
+  transform: translateY(25px);
+  color: #e2e2e2;
+  transition: all 0.5s;
+}
+
+.mat-input {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+.mat-div {
+  padding: 30px 0 0 0;
+  position: relative;
+}
+
+.mat-div:after, .mat-div:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #e2e2e2;
+  bottom: 0;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.mat-div::after {
+  background-color: #8E8DBE;
+  transform: scaleX(0);
+}
+
+.is-active::after {
+  transform: scaleX(1);
+}
+
+.is-active .mat-label {
+  color: #8E8DBE;
+}
+
+.is-completed .mat-label {
+  font-size: 12px;
+  transform: translateY(0);
+}
+
+:host > > > .form-group[_ngcontent-c4] input[type="checkbox"][_ngcontent-c4] + .btn-group[_ngcontent-c4] > label[_ngcontent-c4] span[_ngcontent-c4] {
+  width: 9px;
+  height: 10px;
+}
+
+.progress {
+  overflow: hidden;
+  height: 20px;
+  width: 100% !important;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+
+}
+
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+
+  color: #ffffff;
+  text-align: center;
+  background-color: #d39e00 !important;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+
+:host > > > .progress[_ngcontent-c1] {
+  width: 100px;
+}
+
+.border1 {
+  border: transparent;
+}
+
+.on {
+  color: #17498e;
+  font-size: 18px;
+  margin-left: 120px;
+}
+
+.off {
+  color: #6c757d;
+  font-size: 18px;
+  margin-left: 120px
+}
+
+.on1 {
+  color: #17498e;
+  font-size: 18px;
+  margin-left: 24px;
+
+}
+
+.off1 {
+  color: #6c757d;
+  font-size: 18px;
+  margin-left: 24px;
+
+}
+
+/*******************************************************jointure fichier ***************************************************/
+.files input {
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  padding: 120px 0px 85px 35%;
+  text-align: center !important;
+  margin: 0;
+  width: 100% !important;
+}
+
+.files input:focus {
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  border: 1px solid #92b0b3;
+}
+
+.files {
+  position: relative
+}
+
+.files:after {
+  pointer-events: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 50px;
+  right: 0;
+  height: 56px;
+  content: "";
+  background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+  display: block;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.color input {
+  background-color: #d39e00;
+}
+
+.files:before {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  right: 0;
+  height: 57px;
+  content: " or drag it here. ";
+  display: block;
+  margin: 0 auto;
+  color: #2ea591;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
+.bouton17 {
+  width: 60px;
+  height: 58px;
+  font:bold 13px Arial;
+  border-radius:50%;
+  color: #17498e;
+  background-color: #17498e;
+  margin-left: 57px;
+  margin-top: -15px;
+
+}
+a:hover{
+  text-decoration:  underline;
+}
+:host>>>.mat-form-field-infix{
+  width: 447px;
+}
+:host>>>.mat-expansion-panel-header{
+
+}
+:host>>>.label{
+  margin-bottom: 25px;
+}
+.ui-group-buttons .or{position:relative;float:left;width:.3em;height:1.3em;z-index:3;font-size:12px}
+.ui-group-buttons .or:before{position:absolute;top:50%;left:50%;content:'or';background-color:#5a5a5a;margin-top:-.1em;margin-left:-.9em;width:1.8em;height:1.8em;line-height:1.55;color:#fff;font-style:normal;font-weight:400;text-align:center;border-radius:500px;-webkit-box-shadow:0 0 0 1px rgba(0,0,0,0.1);box-shadow:0 0 0 1px rgba(0,0,0,0.1);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
+.ui-group-buttons .or:after{position:absolute;top:0;left:0;content:' ';width:.3em;height:2.84em;background-color:rgba(0,0,0,0);border-top:.6em solid #5a5a5a;border-bottom:.6em solid #5a5a5a}
+.ui-group-buttons .or.or-lg{height:1.3em;font-size:16px}
+.ui-group-buttons .or.or-lg:after{height:2.85em}
+.ui-group-buttons .or.or-sm{height:1em}
+.ui-group-buttons .or.or-sm:after{height:2.5em}
+.ui-group-buttons .or.or-xs{height:.25em}
+.ui-group-buttons .or.or-xs:after{height:1.84em;z-index:-1000}
+.ui-group-buttons{display:inline-block;vertical-align:middle}
+.ui-group-buttons:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.ui-group-buttons .btn{float:left;border-radius:0}
+.ui-group-buttons .btn:first-child{margin-left:0;border-top-left-radius:.25em;border-bottom-left-radius:.25em;padding-right:15px}
+.ui-group-buttons .btn:last-child{border-top-right-radius:.25em;border-bottom-right-radius:.25em;padding-left:15px}

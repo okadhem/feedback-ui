@@ -1,0 +1,49 @@
+:host>>>.input[type=search]{
+  height: 50px;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  padding: 0 15px;
+  font-family: calibri;
+  font-size: 20px;
+  font-style: normal;
+}
+.bouton17 {
+  width:35px;
+  height:35px;
+  background:#204065;
+  box-shadow:2px 2px 8px #aaa;
+  font:bold 13px Arial;
+  border-radius:50%;
+  color: #ffffff;
+  background-color: #204065;
+  margin-left: 57px;
+  margin-top: -15px;
+  -webkit-background-size: inherit;
+
+}
+.my{
+  background-color: #b8daff;
+}
+:host>>>.dataTables_wrapper .dataTables_filter input{
+  margin-left: -1.5em;
+}
+.modal-dialog {
+  height: 80% !important;
+  padding-top:10%;
+}
+.modal-content {
+  height: 133% !important;
+  overflow:visible;
+  width: 165%;
+  margin-top: -13%;
+  margin-left: -22%;
+}
+.modal-body {
+  height: 80%;
+  overflow: auto;
+}
+rating{
+  color: #FF9934;
+}
+
