@@ -1,29 +1,34 @@
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-<div id="login" class="container mat-container vcenter page-color" >
+<div id="login" class="container mat-container vcenter page-color">
   <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
   <div class="row">
     <div class=" col-md-3"></div>
-    <div class="col-md-6" >
-      <form class="modal-content animate"  name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate style="margin-top: 235px;background-color: transparent;width: 100%">
+    <div class="col-md-6">
+      <form class="modal-content animate" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate style="margin-top: 235px;background-color: transparent;width: 100%">
 
         <div class="row" style="margin-left:34%">
-          <img src="../../assets/img/logggin.jpg" alt="Avatar" class="d-block mx-auto" style="margin-left: -114px" >
+          <img src="../../assets/img/logggin.jpg" alt="Avatar" class="d-block mx-auto" style="margin-left: -114px">
         </div>
-        <br/><br/>
+        <br/>
+        <br/>
 
-        <div class="input-group" style="margin-left:32%; margin-right:25%" [ngClass]="{ 'has-error': f.submitted && !email.valid }" >
+        <div class="input-group" style="margin-left:32%; margin-right:25%" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
 
-          <input id="email" type="text" class="form-control" name="email" placeholder="Login" [(ngModel)]="loginPage.login" #email="ngModel" required style="width: 200%;background-color: rgba(255,255,255,0.5)"/>
-          <div *ngIf="f.submitted &&!email.valid" class="help-block" >Login is required</div>
+          <input id="email" type="text" class="form-control" name="email" placeholder="Login" [(ngModel)]="loginPage.login" #email="ngModel"
+            required style="width: 200%;background-color: rgba(255,255,255,0.5)" />
+          <div *ngIf="f.submitted &&!email.valid" class="help-block">Login is required</div>
         </div>
-        <br/><br/>
+        <br/>
+        <br/>
 
-        <div class="input-group" style="margin-left:32%; margin-right:25%" [ngClass]="{ 'has-error': f.submitted && !password.valid }" >
+        <div class="input-group" style="margin-left:32%; margin-right:25%" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
 
-          <input id="password" type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="loginPage.password" #password="ngModel" required style="width: 200%;background-color: rgba(255,255,255,0.5)"/>
+          <input id="password" type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="loginPage.password"
+            #password="ngModel" required style="width: 200%;background-color: rgba(255,255,255,0.5)" />
           <div *ngIf="f.submitted &&!password.valid" class="help-block">Password is required</div>
         </div>
-        <br/><br/>
+        <br/>
+        <br/>
 
         <div class="col-md-2" style="margin-left:43%; margin-right:50%">
 
@@ -32,10 +37,10 @@
 
         </div>
 
-        <br/><br/>
+        <br/>
+        <br/>
         <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         <div class="row" style="margin-left:10%">
-
 
         </div>
       </form>
@@ -48,4 +53,3 @@
     <div class="col-6"></div>
   </div>
 </div>
-
