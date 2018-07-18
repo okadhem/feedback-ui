@@ -18,9 +18,9 @@ import { ToastModule } from 'ng2-toastr';
 import { DialogModule } from 'primeng/dialog';
 import {
   MatButtonModule,
-
+  MatDividerModule,
   MatChipsModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule, MatRadioModule,
   MatSnackBarModule, MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { ScreenshotComponent } from './screenshot/screenshot.component';
@@ -62,6 +62,8 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
 import { AuthgardGuard } from './login/authgard.guard';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormCreatorComponent } from './form-creator/form-creator.component';
+import { QtextComponent } from './qtext/qtext.component';
+import { QcmComponent } from './qcm/qcm.component';
 
 
 const routes: Routes = [
@@ -114,13 +116,19 @@ const routes: Routes = [
     DetailAvisComponent,
     ReponseComponent,
     TempUnitPipe,
-    SpeedUnitPipe
-    , PersonnesConcerneeComponent, NotificationComponent, AuthComponent, FormCreatorComponent
+    SpeedUnitPipe, 
+    PersonnesConcerneeComponent, 
+    NotificationComponent, 
+    AuthComponent, 
+    FormCreatorComponent, 
+    QtextComponent, 
+    QcmComponent
   ],
   imports: [AutoCompleteModule,
     MatToolbarModule,
     JsonpModule,
     MatTooltipModule,
+    MatDividerModule,
     MatProgressSpinnerModule,
     MatIconModule,
     MatButtonModule,
@@ -134,6 +142,7 @@ const routes: Routes = [
     DndModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatRadioModule,
     MatExpansionModule,
     DataTablesModule,
     MatChipsModule,
@@ -171,7 +180,9 @@ const routes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [
     PersonnesConcerneeComponent,
-    AddThemeComponent
+    AddThemeComponent,
+    QtextComponent, 
+    QcmComponent
   ],
 
 })
