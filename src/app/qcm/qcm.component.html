@@ -1,13 +1,14 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Question">
+    <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+    <mat-icon matSuffix style="cursor: pointer;">clear</mat-icon>
   </mat-form-field>
 </form>
 
-<form class="example-form" *ngFor="let option of options; let i=index; trackBy:trackByFn">
+<form class="example-form" *ngFor="let option of question.QCM_choices; let i=index; trackBy:trackByFn">
   <mat-form-field class="example-full-width">
     <mat-icon matPrefix style="font-size: 13px; padding-right:20px; ">radio_button_unchecked</mat-icon>
-    <input matInput name="option" [(ngModel)]="options[i]">
+    <input matInput name="option" [(ngModel)]="question.QCM_choices[i]">
     <mat-icon matSuffix style="cursor: pointer;" (click)="deleteOption(i)">clear</mat-icon>
   </mat-form-field>
 </form>

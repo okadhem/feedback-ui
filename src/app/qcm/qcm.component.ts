@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Tqcm } from '../tqcm';
+import { Component, OnInit, Input } from '@angular/core';
+import { QChoixMultiples } from '../qChoixMultiples';
 
 @Component({
   selector: 'app-qcm',
@@ -7,19 +7,22 @@ import { Tqcm } from '../tqcm';
   styleUrls: ['./qcm.component.css']
 })
 export class QcmComponent implements OnInit {
-  options: Array<String> = [];
-  constructor() { }
+  question: QChoixMultiples;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   addOption() {
-    const length = this.options.length + 1;
-    this.options.push("Option " + length);
+    const length = this.question.QCM_choices.length + 1;
+    this.question.QCM_choices.push("Option " + length);
   }
 
   deleteOption(index: any) {
-    this.options.splice(index ,1);
+    this.question.QCM_choices.splice(index, 1);
+    console.log(this.question.label);
   }
 
   trackByFn(index: any, item: any) {
@@ -27,3 +30,4 @@ export class QcmComponent implements OnInit {
   }
 
 }
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QText } from '../qText';
 
 @Component({
   selector: 'app-qtext',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qtext.component.css']
 })
 export class QtextComponent implements OnInit {
+  question: QText;
 
   constructor() { }
 
