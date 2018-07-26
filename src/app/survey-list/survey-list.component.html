@@ -1,0 +1,6 @@
+<mat-list style="margin: 5%;">
+  <mat-list-item *ngFor="let enquete of enquetes">
+    <a [routerLink]="['/home/form-renderer', enquete.id]">{{enquete.title}}</a>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

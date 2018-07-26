@@ -16,12 +16,12 @@ export class QcmComponent implements OnInit {
   }
 
   addOption() {
-    const length = this.question.QCM_choices.length + 1;
-    this.question.QCM_choices.push("Option " + length);
+    const length = this.question.choices.length + 1;
+    this.question.choices.push("Option " + length);
   }
 
   deleteOption(index: any) {
-    this.question.QCM_choices.splice(index, 1);
+    this.question.choices.splice(index, 1);
     console.log(this.question.label);
   }
 

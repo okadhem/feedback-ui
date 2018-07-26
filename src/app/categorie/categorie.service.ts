@@ -18,11 +18,11 @@ export class CategorieService {
   }
 
   findAll(): Observable<Categorie[]> {
-    return this.http.get(this.apiUrl);
+    return this.http.get<Categorie[]>(this.apiUrl);
   }
 
   findOne(id: number): Observable<Categorie> {
-    return this.http.get(this.apiUrl1 + `/${id}`);
+    return this.http.get<Categorie>(this.apiUrl1 + `/${id}`);
   }
 
 

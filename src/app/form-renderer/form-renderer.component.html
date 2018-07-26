@@ -1,0 +1,30 @@
+<div *ngIf="enquete$ | async as enquete" style="background-color: white; border: #DDDDDD solid 2px; width: 75%; margin-left: 21%;">
+    <div style="background-color: #17498e; width: 100%; color: white; font-family: Calibri; padding: 20px;">
+        <strong style="font-size: 30px;">{{ enquete.title }}</strong>
+    </div>
+
+    <p style="text-align: justify; padding: 20px; color: black;">description{{ enquete.description }}</p>
+    <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
+
+    <div *ngFor="let question of enquete.questions" style="text-align: justify; padding: 10px 50px; color: black;">
+        <h3>{{question.label}}
+            <span *ngIf="question.required" style="color: #db4437;"> *</span>
+        </h3>
+        <div [ngSwitch]="question.type" style="font-weight: normal; ">
+            <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Votre réponse" name="reponse">
+                </mat-form-field>
+            </form>
+            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;">
+                <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices; let i=index" [value]="i">
+                    {{option}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+
+</div>
