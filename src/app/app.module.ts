@@ -18,10 +18,21 @@ import { ToastModule } from 'ng2-toastr';
 import { DialogModule } from 'primeng/dialog';
 import {
   MatButtonModule,
+  MatCardModule,
   MatDividerModule,
-  MatChipsModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule,
-  MatProgressSpinnerModule, MatRadioModule,
-  MatSnackBarModule, MatToolbarModule, MatTooltipModule
+  MatChipsModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSnackBarModule,
+  MatToolbarModule,
+  MatListModule,
+  MatTooltipModule
 } from '@angular/material';
 import { ScreenshotComponent } from './screenshot/screenshot.component';
 import { MesFeedbacksComponent } from './feedback/mes-feedbacks/mes-feedbacks.component';
@@ -64,6 +75,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormCreatorComponent } from './form-creator/form-creator.component';
 import { QtextComponent } from './qtext/qtext.component';
 import { QcmComponent } from './qcm/qcm.component';
+import { EnqueteService } from './services/enquete.service';
+import { FormRendererComponent } from './form-renderer/form-renderer.component';
+import { SurveyComponent } from './survey/survey.component';
+import { SurveyListComponent } from './survey-list/survey-list.component';
 
 
 const routes: Routes = [
@@ -79,11 +94,14 @@ const routes: Routes = [
       { path: 'Collaborateur', component: CollaboreteurComponent },
       { path: 'Support', component: SupportComponent },
       { path: 'Dashboard', component: DashboardComponent },
+      { path: 'survey', component: SurveyComponent },
+      { path: 'form-renderer/:id', component: FormRendererComponent },
+
 
     ]
   },
-  { path: 'login', component: AuthComponent },
   { path: 'form-creator', component: FormCreatorComponent },
+  { path: 'login', component: AuthComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
@@ -116,18 +134,23 @@ const routes: Routes = [
     DetailAvisComponent,
     ReponseComponent,
     TempUnitPipe,
-    SpeedUnitPipe, 
-    PersonnesConcerneeComponent, 
-    NotificationComponent, 
-    AuthComponent, 
-    FormCreatorComponent, 
-    QtextComponent, 
-    QcmComponent
+    SpeedUnitPipe,
+    PersonnesConcerneeComponent,
+    NotificationComponent,
+    AuthComponent,
+    FormCreatorComponent,
+    QtextComponent,
+    QcmComponent, 
+    FormRendererComponent, 
+    SurveyComponent, 
+    SurveyListComponent
   ],
   imports: [AutoCompleteModule,
     MatToolbarModule,
     JsonpModule,
     MatTooltipModule,
+    MatCardModule,
+    MatListModule,
     MatDividerModule,
     MatProgressSpinnerModule,
     MatIconModule,
@@ -170,7 +193,12 @@ const routes: Routes = [
     }),
     BsDatepickerModule.forRoot()
   ],
-  providers: [LoginService, DataService, NotificationService, AuthService,
+  providers: [
+    LoginService,
+    DataService,
+    NotificationService,
+    EnqueteService,
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -181,7 +209,7 @@ const routes: Routes = [
   entryComponents: [
     PersonnesConcerneeComponent,
     AddThemeComponent,
-    QtextComponent, 
+    QtextComponent,
     QcmComponent
   ],
 

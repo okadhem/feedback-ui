@@ -1,9 +1,4 @@
-<div class="container"
-     style="border: #17498e solid 1px;
-            width: 65.6%;
-    height: 77px;
-    background-color: #17498e;
-    margin-left: 16.7%;">
+<div class="container" style="border: #17498e solid 1px; width: 65.6%; height: 77px; background-color: #17498e; margin-left: 16.7%;">
   <div class="row">
     <div class="col-md-2">
       <i class="material-icons" style="color: white;font-size: 52px;margin-left: -90%;">chevron_left</i>
@@ -25,8 +20,7 @@
 </div>
 
 
-<div class="col-sm-8 text-left" style="border-left: solid #DDDDDD 1px;margin-top: -1%;
-margin-left: 0%;border-right: #DDDDDD 1px solid">
+<div class="col-sm-8 text-left" style="border-left: solid #DDDDDD 1px;margin-top: -1%; margin-left: 0%;border-right: #DDDDDD 1px solid">
   <div id="list-item-1">
     <app-all-feedback-list></app-all-feedback-list>
   </div>
@@ -45,10 +39,17 @@ margin-left: 0%;border-right: #DDDDDD 1px solid">
 
 <div class="col-sm-2 sidenav">
   <ul class="nav nav-pills nav-stacked" style=" position:fixed; text-align:left ">
-    <li [ngClass]="{'activeScroll': feedbackTest==true}"  (click)="feedbacksClik()"><a href="/home/Support#list-item-1">FEEDBACKS</a></li>
-    <li [ngClass]="{'activeScroll': mesFeed==true}"><a href="/home/Support#list-item-2" (click)="mesfeedbacktest()">MES FEEDBACKS</a></li>
-    <li [ngClass]="{'activeScroll': publicfeed==true}"><a href="/home/Support#list-item-3" (click)="feedbackpub()">FEEDBACK PUBLIQUE</a></li>
-    <li [ngClass]="{'activeScroll': theme==true}"><a href="/home/Support#list-item-4" (click)="avisclick()">LES AVIS</a></li>
+    <li [ngClass]="{'activeScroll': feedbackTest==true}" (click)="feedbacksClik()">
+      <a href="/home/Support#list-item-1">FEEDBACKS</a>
+    </li>
+    <li [ngClass]="{'activeScroll': mesFeed==true}">
+      <a href="/home/Support#list-item-2" (click)="mesfeedbacktest()">MES FEEDBACKS</a>
+    </li>
+    <li [ngClass]="{'activeScroll': publicfeed==true}">
+      <a href="/home/Support#list-item-3" (click)="feedbackpub()">FEEDBACK PUBLIQUE</a>
+    </li>
+    <li [ngClass]="{'activeScroll': theme==true}">
+      <a href="/home/Support#list-item-4" (click)="avisclick()">LES AVIS</a>
+    </li>
   </ul>
 </div>
-

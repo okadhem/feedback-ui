@@ -1,11 +1,24 @@
 import { Question } from './question';
 
 export class Enquete {
-    titre: String;
+    title: String;
     description: String;
+    visibility: Array<Person>;
+    expirationDate: Date;
+    //owner: Person;
     questions: Array<Question>;
 
-    constructor(){
+    constructor() {
         this.questions = new Array<Question>();
+    }
+}
+
+export class Person {
+    id: number;
+    firstname: String;
+    lastname: String;
+
+    constructor(id: number) {
+        this.id = id;
     }
 }

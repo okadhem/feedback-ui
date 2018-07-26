@@ -1,6 +1,6 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Titre du formulaire" name="titre" [(ngModel)]="enquete.titre">
+    <input matInput placeholder="Titre du formulaire" name="titre" [(ngModel)]="enquete.title">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -10,16 +10,9 @@
 
 <ng-template #dynamic></ng-template>
 
-<!--<div *ngFor="let question of questions">
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Question" [value]="question.label">
-    </mat-form-field>
-    <mat-form-field class="example-full-width" *ngIf="">
-
-    </mat-form-field>
-  </form>
-</div>-->
-
-<button mat-button (click)="addQtext()">Ajouter question à réponse texte</button>
+<button mat-button (click)="addQtext()" style="margin-left: 100px;">Ajouter question à réponse texte</button>
 <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
+<button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions)">Envoyer</button>
+
+
+<app-form-renderer></app-form-renderer>

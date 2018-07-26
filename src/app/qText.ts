@@ -1,7 +1,7 @@
 import { Question } from './question';
 
 export class QText extends Question {
-    type = "Text";
+    type = "QTextEntity";
 
     constructor() {
         super();

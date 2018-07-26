@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { QcmComponent } from '../qcm/qcm.component';
 import { QtextComponent } from '../qtext/qtext.component';
-import { Enquete } from '../enquete';
+import { Enquete, Person } from '../enquete';
 import { Question } from '../question';
 import { QText } from '../qText';
 import { QChoixMultiples } from '../qChoixMultiples';
+import { EnqueteService } from '../services/enquete.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class FormCreatorComponent implements OnInit {
     read: ViewContainerRef
   }) viewContainerRef: ViewContainerRef;
 
-  constructor(private factoryResolver: ComponentFactoryResolver) { }
+  constructor(private factoryResolver: ComponentFactoryResolver,
+    private enqueteService: EnqueteService) { }
   ngOnInit() {
     this.enquete = new Enquete();
     //this.questions.push({ qtype: Qtype.QTEXT, label: 'hello', QCM_choices: [] });
@@ -28,7 +30,7 @@ export class FormCreatorComponent implements OnInit {
     //this.questions.push({ qtype: Qtype.QTEXT, label: '', QCM_choices: [] })
   }*/
 
-  addQtext(){
+  addQtext() {
     let factory = this.factoryResolver.resolveComponentFactory(QtextComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QText();
@@ -36,13 +38,22 @@ export class FormCreatorComponent implements OnInit {
     compRef.instance.question = question;
   }
 
-  addQcm(){
+  addQcm() {
     let factory = this.factoryResolver.resolveComponentFactory(QcmComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QChoixMultiples();
     this.enquete.questions.push(question);
     compRef.instance.question = question;
-    console.log(this.enquete);
+  }
+
+  envoyer(title: String, description: String, questions: Array<Question>) {
+    let expirationDate = new Date();
+    //let owner = new Person(1);
+    let visibility = [];
+    const newEnquete: Enquete = { title, description, visibility, expirationDate, questions } as Enquete;
+
+    this.enqueteService.addEnquete(newEnquete)
+      .subscribe();
   }
 
 }
