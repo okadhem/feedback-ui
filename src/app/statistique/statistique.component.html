@@ -1,27 +1,13 @@
-<div class="col-md-6" >
-
-  <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [legend]="true"
-[colors]="chartColorsbar"
-          [chartType]="barChartType"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-</div>
-<div class="col-md-6">
-  <canvas baseChart
-          [options]="piechartoptions"
-          [data]="pieChartData"
-          [labels]="pieChartLabels"
-          [chartType]="pieChartType"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked1($event)"
-          [colors]="chartColors"
-          [legend]="true"></canvas>
-</div>
-<div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
-  <span (click)="randomizeType()" class="glyphicon glyphicon-refresh"
-        style="color: #004085;font-size: 20px;margin-left: 98%;font-weight: bold"></span>
+<div style="margin: 20px;">
+  <div class="col-md-6">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="true" [colors]="chartColorsbar"
+      [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <div class="col-md-6">
+    <canvas baseChart [options]="piechartoptions" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked1($event)" [colors]="chartColors" [legend]="true"></canvas>
+  </div>
+  <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
+    <span (click)="randomizeType()" class="glyphicon glyphicon-refresh" style="color: #004085;font-size: 20px;margin-left: 98%;font-weight: bold"></span>
+  </div>
 </div>

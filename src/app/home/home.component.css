@@ -8,27 +8,22 @@
 .row.content {height: 450px}
 
 /* Set gray background color and 100% height */
-.sidenav {
+/*.sidenav {
   padding-top: 20px;
   background-color: #ffffff;
   height: 100%;
-}
+}*/
 
-/* Set black background color, white text and some padding */
-footer {
-  background-color: #ffffff;
-  color: black;
-  padding: 15px;
-}
+
 
 /* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
+/*@media screen and (max-width: 767px) {
   .sidenav {
     height: auto;
     padding: 15px;
   }
   .row.content {height:auto;}
-}
+}*/
 :host>>>.navbar-inverse{
   background-color: transparent;
   border:transparent
@@ -164,3 +159,7 @@ html, body { height: 100%; }
   border-bottom: white solid 3px;
 }
 
+.example-container {
+  margin: 50px 0;
+  background: white;
+}

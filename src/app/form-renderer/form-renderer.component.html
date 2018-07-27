@@ -1,6 +1,6 @@
-<div *ngIf="enquete$ | async as enquete" style="background-color: white; border: #DDDDDD solid 2px; width: 75%; margin-left: 21%;">
-    <div style="background-color: #17498e; width: 100%; color: white; font-family: Calibri; padding: 20px;">
-        <strong style="font-size: 30px;">{{ enquete.title }}</strong>
+<div *ngIf="enquete$ | async as enquete" style="border: #DDDDDD solid 2px; width: 80%; margin-left: 10%; min-height: 400px;">
+    <div style="background-color: #17498e; width: 100%; text-align: center; padding: 20px;">
+        <strong style="color: white; font-size: 25px; font-family: Calibri;">{{ enquete.title }}</strong>
     </div>
 
     <p style="text-align: justify; padding: 20px; color: black;">description{{ enquete.description }}</p>

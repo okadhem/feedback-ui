@@ -1,31 +1,8 @@
-<img src="../assets/img//femme.jpg" style="border-radius: 50%;width: 50%; margin-left:-30%;margin-top: 20%;">
+<!--<img src="../assets/img//femme.jpg" style="border-radius: 50%;width: 50%; margin-left:-30%;margin-top: 20%;">
 <h5 class="title" style="align-content: center;margin-left:-30%;color: #20324a">Bonjour</h5>
 <h4 class="title" style="align-content: center;margin-left:-20% ;color: #20324a">
   <strong>AAAA {{name}}</strong>
 </h4>
-<div id="demo1">
-  <ul id="service1" class="sub-menu collapse">
-    <strong>
-      <li>
-        <a href="#" style="color: #20324a">Ma fiche RH</a>
-      </li>
-      <li>
-        <a href="#" routerLink="/" style="color: #20324a">Menu 1</a>
-      </li>
-      <li>
-        <a href="#" style="color: #20324a">Menu 2</a>
-      </li>
-      <li>
-        <a href="#" style="color: #20324a">Menu 3</a>
-      </li>
-    </strong>
-  </ul>
-</div>
-<div class='hotspot'>
-  <div class="button-wrap">
-    <button class='pulse-button' id="btn1" data-toggle="collapse" data-target="#service1">+</button>
-  </div>
-</div>
 
 <ul class="nav navbar-nav" style="margin-left: -7%;">
   <li class="active" style="background-color: #17498e;color: white;width: 90%;height: 30%;border:white solid 2px ">
@@ -42,4 +19,24 @@
     <a href="#" style="color: white" routerLink="/home/survey">
       <i style="font-size: 18px" class="fas fa-file-alt"></i> Enquête</a>
   </li>
-</ul>
+</ul>-->
+<div style="text-align: center;">
+  <img src="../assets/img//femme.jpg" style="border-radius: 50%; width: 40%; margin-top:50px; margin-bottom: 20px;">
+  <h5 class="title" style="align-content: center; color: #20324a">Bonjour</h5>
+  <h4 class="title" style="align-content: center; color: #20324a; margin-bottom: 20px;">
+    <strong>AAAA {{name}}</strong>
+  </h4>
+
+  <button mat-button style="background-color: #17498e;color: white; width: 80%; height: 20%; margin: 10px 0;" routerLink="/home/Collaborateur"
+    (click)="feedbackPage()">
+    <span style="font-size:18px;" class="glyphicon glyphicon-comment"></span> Feedback
+  </button>
+
+  <button href="#" mat-button style="background-color: #17498e; color: white; width: 80%; height: 20%; margin: 10px 0;" routerLink="/home/Dashboard">
+    <span style="font-size: 18px" class="fas fa-chart-pie"></span> Statistique Feedback
+  </button>
+
+  <button mat-button style="background-color: #17498e; color: white; width: 80%; height: 20%; margin: 10px 0;" routerLink="/home/survey">
+    <span style="font-size: 18px" class="fas fa-file-alt"></span> Enquête
+  </button>
+</div>

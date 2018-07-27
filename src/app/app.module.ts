@@ -32,7 +32,8 @@ import {
   MatSnackBarModule,
   MatToolbarModule,
   MatListModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSidenavModule
 } from '@angular/material';
 import { ScreenshotComponent } from './screenshot/screenshot.component';
 import { MesFeedbacksComponent } from './feedback/mes-feedbacks/mes-feedbacks.component';
@@ -169,6 +170,7 @@ const routes: Routes = [
     MatExpansionModule,
     DataTablesModule,
     MatChipsModule,
+    MatSidenavModule,
     BrowserModule, BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,

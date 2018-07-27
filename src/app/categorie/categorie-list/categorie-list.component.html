@@ -3,7 +3,7 @@
 </button>
 <a style="color:#20324a;font-size: 12px;cursor: pointer;text-decoration: none;font-size: 14px;font-family: Calibri;font-weight: bold"
   (click)="getAllCategories()" onclick="openNav()">Feedback </a>
-<div id="myNav" class="overlay shadow">
+<div id="myNav" class="overlay shadow" style="z-index: 1;">
 
   <div style="background-color: #17498e;width: 500px;height: 73px">
     <br>
@@ -30,8 +30,7 @@
     <div class="card" style="margin-left: -46px;font-size: 18px">
       <ul class="nav nav-tabs" role="tablist" style="margin-left: 40px;margin-right: 0px">
         <li *ngFor="let cat of Categories; let i = index ;first as isFirst ; last as isLast" role="presentation" style="width: 110px;margin-right: 0px">
-          <a href="#home" (click)="getCategorie(cat.id);resetVisiblity()" aria-controls="home" role="tab" data-toggle="tab"
-            style="font-family: Calibri;font-size: 16px">{{cat.typeCategorie}}</a>
+          <a href="#home" (click)="getCategorie(cat.id);resetVisiblity()" aria-controls="home" role="tab" data-toggle="tab" style="font-family: Calibri;font-size: 16px">{{cat.typeCategorie}}</a>
         </li>
       </ul>
     </div>
@@ -308,11 +307,6 @@
         </div>
       </div>
     </form>
-  </div>
-  <div>
-    <p>
-      une souris verte
-    </p>
   </div>
 </div>
 
