@@ -3,28 +3,60 @@
         <strong style="color: white; font-size: 25px; font-family: Calibri;">{{ enquete.title }}</strong>
     </div>
 
-    <p style="text-align: justify; padding: 20px; color: black;">description{{ enquete.description }}</p>
-    <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
+    <mat-tab-group>
+        <mat-tab label="Questions">
+            <div *ngIf="myResponse$ | async as myResponse else elseBlock" style="text-align: justify; padding: 10px 50px; color: black;">
+                <div *ngIf="myResponse.responses != null else elseBlock">
+                    <div *ngFor="let responseQuestion of myResponse.responses; let i = index">
+                        <h4>{{enquete.questions[i].label}}</h4>
+                        <div style="font-weight: normal; margin-left: 20px;">
+                            {{responseQuestion.value}}
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <ng-template #elseBlock>
+                    <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
+                    <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
 
-    <div *ngFor="let question of enquete.questions" style="text-align: justify; padding: 10px 50px; color: black;">
-        <h3>{{question.label}}
-            <span *ngIf="question.required" style="color: #db4437;"> *</span>
-        </h3>
-        <div [ngSwitch]="question.type" style="font-weight: normal; ">
-            <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Votre réponse" name="reponse">
-                </mat-form-field>
-            </form>
-            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;">
-                <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices; let i=index" [value]="i">
-                    {{option}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <br>
-        <mat-divider></mat-divider>
-    </div>
-
-
+                    <div *ngFor="let question of enquete.questions; let i = index" style="text-align: justify; padding: 10px 50px; color: black;">
+                        <h3>{{question.label}}
+                            <span *ngIf="question.required" style="color: #db4437;"> *</span>
+                        </h3>
+                        <div [ngSwitch]="question.type" style="font-weight: normal; ">
+                            <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value">
+                                </mat-form-field>
+                            </form>
+                            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value">
+                                <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
+                                    {{option}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <br>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <button mat-button (click)="envoyer()" [routerLink]="['/home/survey']">Envoyer</button>
+                    <button mat-button [routerLink]="['/home/survey']">Annuler</button>
+                </ng-template>
+            </div>
+        </mat-tab>
+        <mat-tab label="Réponses">
+            <div *ngIf="allResponses$ | async as allResponses" style="text-align: justify; padding: 10px 50px; color: black;">
+                <div *ngFor="let response of allResponses">
+                    <div *ngFor="let responseQuestion of response.responses; let i = index">
+                        <h4>{{enquete.questions[i].label}}</h4>
+                        <div style="font-weight: normal; margin-left: 20px;">
+                            {{responseQuestion.value}}
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>

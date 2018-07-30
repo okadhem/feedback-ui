@@ -1,26 +1,21 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
-    <mat-icon matSuffix style="cursor: pointer;">clear</mat-icon>
-  </mat-form-field>
-</form>
+<mat-divider></mat-divider>
+<div style="padding: 20px;">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+      <!--<mat-icon matSuffix style="cursor: pointer;">clear</mat-icon>-->
+    </mat-form-field>
+  </form>
 
-<form class="example-form" *ngFor="let option of question.choices; let i=index; trackBy:trackByFn">
-  <mat-form-field class="example-full-width">
-    <mat-icon matPrefix style="font-size: 13px; padding-right:20px; ">radio_button_unchecked</mat-icon>
-    <input matInput name="option" [(ngModel)]="question.choices[i]">
-    <mat-icon matSuffix style="cursor: pointer;" (click)="deleteOption(i)">clear</mat-icon>
-  </mat-form-field>
-</form>
+  <form class="example-form" style="padding: 0 20px; width: 70%;" *ngFor="let option of question.choices; let i=index; trackBy:trackByFn">
+    <mat-form-field class="example-full-width">
+      <mat-icon matPrefix style="font-size: 13px; padding-right:20px;">radio_button_unchecked</mat-icon>
+      <input matInput name="option" [(ngModel)]="question.choices[i]">
+      <mat-icon matSuffix style="cursor: pointer;" (click)="deleteOption(i)">clear</mat-icon>
+    </mat-form-field>
+  </form>
 
-<button mat-button (click)="addOption()">Ajouter une option</button>
+  <button mat-button (click)="addOption()">Ajouter une option</button>
+</div>
 <br>
 
-
-<!--<mat-radio-group class="example-form" *ngFor="let option of options; let i=index">
-  <mat-radio-button class="example-full-width" value="i" disabled>{{option}}</mat-radio-button>
-</mat-radio-group>
-
-<mat-radio-group class="example-form">
-  <mat-radio-button class="example-full-width" value="1" (click)="addOption()" placeholder="Ajouter une option" disabled></mat-radio-button>
-</mat-radio-group>-->

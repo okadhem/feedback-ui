@@ -17,23 +17,38 @@ import { HomeComponent } from './home/home.component';
 import { ToastModule } from 'ng2-toastr';
 import { DialogModule } from 'primeng/dialog';
 import {
+  MatAutocompleteModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatCardModule,
-  MatDividerModule,
+  MatCheckboxModule,
   MatChipsModule,
+  MatDatepickerModule,
   MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
-  MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
+  MatMenuModule,
   MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
   MatToolbarModule,
-  MatListModule,
-  MatTooltipModule,
-  MatSidenavModule
+  MatTooltipModule
 } from '@angular/material';
 import { ScreenshotComponent } from './screenshot/screenshot.component';
 import { MesFeedbacksComponent } from './feedback/mes-feedbacks/mes-feedbacks.component';
@@ -55,7 +70,6 @@ import { DetailAvisComponent } from './avis/detail-avis/detail-avis.component';
 import { BsDatepickerModule, RatingModule } from 'ngx-bootstrap';
 import { LoginService } from './login/login.service';
 import { DetailFeedbackComponent } from './feedback/detail-feedback/detail-feedback.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SharedModule } from 'primeng/shared';
 import { FeedbackModule } from './feedback/feedback.module';
 import { AccordionModule } from 'primeng/primeng';
@@ -72,7 +86,6 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { AuthgardGuard } from './login/authgard.guard';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormCreatorComponent } from './form-creator/form-creator.component';
 import { QtextComponent } from './qtext/qtext.component';
 import { QcmComponent } from './qcm/qcm.component';
@@ -96,12 +109,12 @@ const routes: Routes = [
       { path: 'Support', component: SupportComponent },
       { path: 'Dashboard', component: DashboardComponent },
       { path: 'survey', component: SurveyComponent },
+      { path: 'form-creator', component: FormCreatorComponent },
       { path: 'form-renderer/:id', component: FormRendererComponent },
 
 
     ]
   },
-  { path: 'form-creator', component: FormCreatorComponent },
   { path: 'login', component: AuthComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
@@ -141,49 +154,62 @@ const routes: Routes = [
     AuthComponent,
     FormCreatorComponent,
     QtextComponent,
-    QcmComponent, 
-    FormRendererComponent, 
-    SurveyComponent, 
+    QcmComponent,
+    FormRendererComponent,
+    SurveyComponent,
     SurveyListComponent
   ],
   imports: [AutoCompleteModule,
-    MatToolbarModule,
     JsonpModule,
-    MatTooltipModule,
-    MatCardModule,
-    MatListModule,
-    MatDividerModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatButtonModule,
     AccordionModule,
     RatingModule.forRoot(),
     ChartsModule,
-    MatSnackBarModule,
     MatAutocompleteModule,
-    LoginModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
     MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    LoginModule,
     DndModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatRadioModule,
-    MatExpansionModule,
     DataTablesModule,
-    MatChipsModule,
-    MatSidenavModule,
     BrowserModule, BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    MatDialogModule,
     HttpClientModule,
     DialogModule,
     HttpModule,
     RouterModule.forRoot(routes),
     FormsModule,
     SharedModule,
-    MatChipsModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     LoadingModule.forRoot({
       animationType: ANIMATION_TYPES.rotatingPlane,
       backdropBackgroundColour: 'rgba(23,73,142,0.9)',

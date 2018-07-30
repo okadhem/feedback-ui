@@ -1,18 +1,27 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Titre du formulaire" name="titre" [(ngModel)]="enquete.title">
-  </mat-form-field>
+<div style="border: #DDDDDD solid 2px; width: 80%; margin-left: 10%; min-height: 400px;">
+  <div style="background-color: #17498e; width: 100%; text-align: center; padding: 20px;">
+    <strong style="color: white; font-size: 25px; font-family: Calibri;">Formulaire sans titre</strong>
+  </div>
+  <div style="text-align: justify;" style="text-align: justify; padding: 30px 50px; color: black;">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" style="width: 45%;">
+        <input matInput placeholder="Titre du formulaire" name="titre" [(ngModel)]="enquete.title">
+      </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Description" name="description" [(ngModel)]="enquete.description"></textarea>
-  </mat-form-field>
-</form>
+      <mat-form-field class="example-full-width" style="width: 45%;">
+        <input matInput [matDatepicker]="picker" name="expirationDate" placeholder="Date d'expiration" [(ngModel)]="enquete.expirationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-<ng-template #dynamic></ng-template>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Description" name="description" [(ngModel)]="enquete.description"></textarea>
+      </mat-form-field>
+    </form>
+    <ng-template #dynamic></ng-template>
 
-<button mat-button (click)="addQtext()" style="margin-left: 100px;">Ajouter question à réponse texte</button>
-<button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
-<button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions)">Envoyer</button>
-
-
-<app-form-renderer></app-form-renderer>
+    <button mat-button (click)="addQtext()">Ajouter question à réponse texte</button>
+    <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
+    <button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions, enquete.expirationDate)" [routerLink]="['/home/survey']">Envoyer</button>
+  </div>
+</div>

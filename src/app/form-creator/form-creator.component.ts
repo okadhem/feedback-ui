@@ -6,6 +6,7 @@ import { Question } from '../question';
 import { QText } from '../qText';
 import { QChoixMultiples } from '../qChoixMultiples';
 import { EnqueteService } from '../services/enquete.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class FormCreatorComponent implements OnInit {
   }) viewContainerRef: ViewContainerRef;
 
   constructor(private factoryResolver: ComponentFactoryResolver,
-    private enqueteService: EnqueteService) { }
+    private enqueteService: EnqueteService,
+    private authService: AuthService) { }
+
   ngOnInit() {
     this.enquete = new Enquete();
     //this.questions.push({ qtype: Qtype.QTEXT, label: 'hello', QCM_choices: [] });
@@ -46,14 +49,14 @@ export class FormCreatorComponent implements OnInit {
     compRef.instance.question = question;
   }
 
-  envoyer(title: String, description: String, questions: Array<Question>) {
-    let expirationDate = new Date();
+  envoyer(title: String, description: String, questions: Array<Question>, expirationDate: Date) {
     //let owner = new Person(1);
     let visibility = [];
     const newEnquete: Enquete = { title, description, visibility, expirationDate, questions } as Enquete;
 
-    this.enqueteService.addEnquete(newEnquete)
+    this.enqueteService.addSurvey(newEnquete, this.authService.getLoggedInUser().id)
       .subscribe();
   }
 
 }
+
