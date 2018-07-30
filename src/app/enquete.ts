@@ -5,9 +5,7 @@ export class Enquete {
     description: String;
     visibility: Array<Person>;
     expirationDate: Date;
-    //owner: Person;
     questions: Array<Question>;
-
     constructor() {
         this.questions = new Array<Question>();
     }

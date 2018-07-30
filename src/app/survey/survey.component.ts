@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login/login.service';
+import { UserDTO } from '../user/User';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-survey',
@@ -9,7 +12,5 @@ export class SurveyComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

@@ -1,3 +1,15 @@
+<div align="right">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="before">
+    <button mat-menu-item [routerLink]="['/home/form-creator']">
+      <!--<mat-icon>dialpad</mat-icon>-->
+      <span>Ajouter une enquête...</span>
+    </button>
+  </mat-menu>
+</div>
+
 <mat-list style="margin: 20px;">
   <mat-list-item *ngFor="let enquete of enquetes">
     <a [routerLink]="['/home/form-renderer', enquete.id]">{{enquete.title}}</a>

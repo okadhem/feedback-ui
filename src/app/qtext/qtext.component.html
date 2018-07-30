@@ -1,11 +1,14 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
-  </mat-form-field>
-</form>
+<mat-divider></mat-divider>
+<div style="padding: 20px;">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+    </mat-form-field>
+  </form>
 
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Réponse" disabled>
-  </mat-form-field> 
-</form>
+  <form class="example-form" style="padding: 0 20px; width: 70%;">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Réponse" disabled>
+    </mat-form-field>
+  </form>
+</div>

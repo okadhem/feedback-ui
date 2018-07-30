@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Enquete } from '../enquete';
 import { EnqueteService } from '../services/enquete.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-survey-list',
@@ -11,14 +12,15 @@ export class SurveyListComponent implements OnInit {
 
   public enquetes: Enquete[];
 
-  constructor(private enqueteService: EnqueteService) { }
+  constructor(private enqueteService: EnqueteService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.get();
   }
 
   get(): void {
-    this.enqueteService.getEnquetes()
+    this.enqueteService.getSurveys(this.authService.getLoggedInUser().id)
       .subscribe(enquetes => this.enquetes = enquetes);
   }
 }

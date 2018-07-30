@@ -78,7 +78,6 @@ export class LoginComponent implements OnInit {
 
       })
 
-
     /*
     if(this.loginPage.login=="Anissa" && this.loginPage.password=="chekir"){
       this.router.navigateByUrl("/home");
