@@ -31,16 +31,16 @@ export class EnqueteService {
   }
 
   addResponse(response: SurveyResponse, connectedUser: Number): Observable<SurveyResponse> {
-    return this.http.post<SurveyResponse>(`http://localhost:8088/api/surveys/${response.idSurvey}/responses?connected-user=${connectedUser}`, response);
+    return this.http.post<SurveyResponse>(`http://localhost:8088/api/surveys/${response.surveyId}/responses?connected-user=${connectedUser}`, response);
   }
 
-  getAllResponses(idSurvey: Number, connectedUser: Number): Observable<SurveyResponse[]> {
-    return this.http.get<SurveyResponse[]>(`http://localhost:8088/api/surveys/${idSurvey}/responses?connected-user=${connectedUser}`)
+  getAllResponses(surveyId: Number, connectedUser: Number): Observable<SurveyResponse[]> {
+    return this.http.get<SurveyResponse[]>(`http://localhost:8088/api/surveys/${surveyId}/responses?connected-user=${connectedUser}`)
       .catch(this.errorHandler);
   }
 
-  getMyResponse(idSurvey: Number, connectedUser: Number): Observable<SurveyResponse> {
-    return this.http.get<SurveyResponse>(`http://localhost:8088/api/surveys/${idSurvey}/my-response?connected-user=${connectedUser}`)
+  getMyResponse(surveyId: Number, connectedUser: Number): Observable<SurveyResponse> {
+    return this.http.get<SurveyResponse>(`http://localhost:8088/api/surveys/${surveyId}/my-response?connected-user=${connectedUser}`)
       .catch(this.errorHandler);
   }
 

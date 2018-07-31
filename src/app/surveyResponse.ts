@@ -1,7 +1,7 @@
 import { Response } from './response';
 
 export class SurveyResponse {
-    idSurvey: Number;
+    surveyId: Number;
     //value: String;
     responses: Array<Response>;
 
