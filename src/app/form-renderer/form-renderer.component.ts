@@ -32,7 +32,7 @@ export class FormRendererComponent implements OnInit {
     this.getAllResponses();
     this.getMyResponses();
     this.surveyResponse = new SurveyResponse();
-    this.surveyResponse.idSurvey = +this.route.snapshot.paramMap.get('id');
+    this.surveyResponse.surveyId = +this.route.snapshot.paramMap.get('id');
     this.enquete$.subscribe(enquete => {
       for (var i = 0; i < enquete.questions.length; i++) {
         //this.surveyResponse.responses[i].questionId = enquete.questions[i].id;
@@ -71,7 +71,12 @@ export class FormRendererComponent implements OnInit {
       .subscribe();
   }
 
-  ok(myResponse: SurveyResponse){
-    console.log(myResponse);
+  edit(myResponse: SurveyResponse) {
+    this.enqueteService.addResponse(myResponse, this.authService.getLoggedInUser().id)
+      .subscribe();
   }
+
+  /*ok(myResponse: SurveyResponse){
+    console.log(myResponse);
+  }*/
 }
