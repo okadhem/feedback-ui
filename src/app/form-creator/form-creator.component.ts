@@ -7,6 +7,10 @@ import { QText } from '../qText';
 import { QChoixMultiples } from '../qChoixMultiples';
 import { EnqueteService } from '../services/enquete.service';
 import { AuthService } from '../services/auth.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { startWith } from 'rxjs/operator/startWith';
 
 
 @Component({
@@ -20,13 +24,47 @@ export class FormCreatorComponent implements OnInit {
     read: ViewContainerRef
   }) viewContainerRef: ViewContainerRef;
 
+
+  myControl = new FormControl();
+  options: Person[] = [
+    { firstname: 'leila', lastname: 'medhioub', id: 1 },
+    { firstname: 'kadhem', lastname: 'ouerghi', id: 2 },
+  ];
+  filteredOptions: Observable<Person[]>;
+
+
+
   constructor(private factoryResolver: ComponentFactoryResolver,
     private enqueteService: EnqueteService,
     private authService: AuthService) { }
 
+
   ngOnInit() {
     this.enquete = new Enquete();
-    //this.questions.push({ qtype: Qtype.QTEXT, label: 'hello', QCM_choices: [] });
+
+
+    /*this.filteredOptions = this.myControl.valueChanges.startWith('')
+      .pipe(
+        map(value => typeof value === 'string' ? <String>value : (<Person>value).firstname),
+        map(name => <String>name ? this._filter(<String>name) : this.options.slice())
+      );*/
+
+      this.filteredOptions = this.myControl.valueChanges
+      .map(v => {
+        let t = v.split(' ');
+        return t[t.lenght() - 1]} )
+      .map(v => this.options.filter(per => per.firstname.startsWith(v)) );
+      //this.myControl.valueChanges.subscribe(v => this.filteredOptions.)
+  }
+
+  displayFn(user?: Person): String | undefined {
+    return user ? user.firstname : undefined;
+  }
+
+  private _filter(name: String): Person[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.firstname.toLowerCase().indexOf(filterValue) === 0);
   }
 
   /*add() {

@@ -24,4 +24,17 @@
     <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
     <button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions, enquete.expirationDate)" [routerLink]="['/home/survey']">Envoyer</button>
   </div>
+
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.firstname}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
 </div>
