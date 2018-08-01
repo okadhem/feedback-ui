@@ -20,6 +20,12 @@
     </form>
     <ng-template #dynamic></ng-template>
 
+    <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Select cities" [(ngModel)]="selectedCityIds">
+    </ng-select>
+    <p>
+      Selected cities: {{selectedCityIds}}
+    </p>
+
     <button mat-button (click)="addQtext()">Ajouter question à réponse texte</button>
     <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
     <button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions, enquete.expirationDate)" [routerLink]="['/home/survey']">Envoyer</button>

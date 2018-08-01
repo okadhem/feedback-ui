@@ -7,7 +7,7 @@
     </mat-form-field>
   </form>
 
-  <form class="example-form" style="padding: 0 20px; width: 70%;" *ngFor="let option of question.choices; let i=index; trackBy:trackByFn">
+  <form class="example-form" style="padding: 0 20px; width: 70%;" *ngFor="let option of question.choices; let i=index; trackBy: trackByFn">
     <mat-form-field class="example-full-width">
       <mat-icon matPrefix style="font-size: 13px; padding-right:20px;">radio_button_unchecked</mat-icon>
       <input matInput name="option" [(ngModel)]="question.choices[i]">

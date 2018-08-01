@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class StatService {
@@ -17,23 +17,23 @@ export class StatService {
   /* private AnomalieURL = 'http://localhost:8080/FEEDBACK/api/GetStatistiqueanomalie';*/
 
   loadStatProposition(): Observable<number[]> {
-    return this.http.get(this.PropositionURL);
+    return this.http.get<number[]>(this.PropositionURL);
   }
 
 
   loadKey(): Observable<String[]> {
-    return this.http.get(this.KeyURL);
+    return this.http.get<String[]>(this.KeyURL);
   }
   loadKeyProp(): Observable<String[]> {
-    return this.http.get(this.KeyPropURL);
+    return this.http.get<String[]>(this.KeyPropURL);
   }
 
   loadPropositionValue(): Observable<number[]> {
-    return this.http.get(this.ValuePropositionURL);
+    return this.http.get<number[]>(this.ValuePropositionURL);
   }
 
   loadAnomalieValue(): Observable<number[]> {
-    return this.http.get(this.ValueAnomalieURL);
+    return this.http.get<number[]>(this.ValueAnomalieURL);
   }
 
   /*loadStatAnomalie():Observable<number>{

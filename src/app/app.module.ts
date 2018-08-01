@@ -7,8 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoadingModule, ANIMATION_TYPES } from 'ngx-loading';
 import { CategorieListComponent } from './categorie/categorie-list/categorie-list.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { Http, HttpModule, Jsonp, JsonpModule } from '@angular/http';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Jsonp, JsonpModule, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingComponent } from './rating/rating.component';
 import { html2canvas } from 'html2canvas';
@@ -50,6 +49,7 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { ScreenshotComponent } from './screenshot/screenshot.component';
 import { MesFeedbacksComponent } from './feedback/mes-feedbacks/mes-feedbacks.component';
 import { DataTablesModule } from 'angular-datatables';
@@ -93,6 +93,7 @@ import { EnqueteService } from './services/enquete.service';
 import { FormRendererComponent } from './form-renderer/form-renderer.component';
 import { SurveyComponent } from './survey/survey.component';
 import { SurveyListComponent } from './survey-list/survey-list.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -196,11 +197,12 @@ const routes: Routes = [
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    NgSelectModule,
     LoginModule,
     DndModule,
     ReactiveFormsModule,
     DataTablesModule,
-    BrowserModule, BrowserModule,
+    BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     HttpClientModule,
