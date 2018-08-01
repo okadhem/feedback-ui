@@ -20,18 +20,30 @@ export class FormCreatorComponent implements OnInit {
     read: ViewContainerRef
   }) viewContainerRef: ViewContainerRef;
 
+  cities2 = [
+    { id: 1, name: 'Vilnius' },
+    { id: 2, name: 'Kaunas' },
+    { id: 3, name: 'Pavilnys', disabled: true },
+    { id: 4, name: 'Pabradė' },
+    { id: 5, name: 'Klaipėda' }
+  ];
+
+  selectedCity: any;
+  selectedCityIds: string[];
+  selectedCityName = 'Vilnius';
+  selectedCityId: number;
+  selectedUserIds: number[];
+
   constructor(private factoryResolver: ComponentFactoryResolver,
     private enqueteService: EnqueteService,
     private authService: AuthService) { }
 
   ngOnInit() {
     this.enquete = new Enquete();
-    //this.questions.push({ qtype: Qtype.QTEXT, label: 'hello', QCM_choices: [] });
+
   }
 
-  /*add() {
-    //this.questions.push({ qtype: Qtype.QTEXT, label: '', QCM_choices: [] })
-  }*/
+
 
   addQtext() {
     let factory = this.factoryResolver.resolveComponentFactory(QtextComponent);
