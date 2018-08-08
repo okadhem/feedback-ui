@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver,ComponentRef } from '@angular/core';
 import { QcmComponent } from '../qcm/qcm.component';
 import { QtextComponent } from '../qtext/qtext.component';
 import { Enquete, Person } from '../enquete';
@@ -16,6 +16,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class FormCreatorComponent implements OnInit {
   enquete: Enquete;
+  questions: ComponentRef<any>[] = [];
   @ViewChild('dynamic', {
     read: ViewContainerRef
   }) viewContainerRef: ViewContainerRef;
@@ -49,20 +50,24 @@ export class FormCreatorComponent implements OnInit {
     let factory = this.factoryResolver.resolveComponentFactory(QtextComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QText();
-    this.enquete.questions.push(question);
+    this.questions.push(compRef);
     compRef.instance.question = question;
+    compRef.instance.compRef = compRef;
   }
 
   addQcm() {
     let factory = this.factoryResolver.resolveComponentFactory(QcmComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QChoixMultiples();
-    this.enquete.questions.push(question);
+    this.questions.push(compRef);
     compRef.instance.question = question;
+    compRef.instance.compRef = compRef;
   }
 
   envoyer(title: String, description: String, questions: Array<Question>, expirationDate: Date) {
     let visibility = this.selectedEmployees;
+    questions = this.questions.filter(q => q.instance.isAlive)
+                              .map(cr => cr.instance.question);
     const newEnquete: Enquete = { title, description, visibility, expirationDate, questions } as Enquete;
     this.enqueteService.addSurvey(newEnquete, this.authService.getLoggedInUser().id)
       .subscribe();
