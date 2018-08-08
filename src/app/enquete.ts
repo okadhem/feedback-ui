@@ -13,9 +13,9 @@ export class Enquete {
 
 export class Person {
     id: number;
-    firstname: String;
-    lastname: String;
-
+    firstName: String;
+    lastName: String;
+    fullName: String;
     constructor(id: number) {
         this.id = id;
     }

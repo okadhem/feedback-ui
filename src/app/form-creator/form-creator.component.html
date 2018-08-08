@@ -2,7 +2,8 @@
   <div style="background-color: #17498e; width: 100%; text-align: center; padding: 20px;">
     <strong style="color: white; font-size: 25px; font-family: Calibri;">Formulaire sans titre</strong>
   </div>
-  <div style="text-align: justify;" style="text-align: justify; padding: 30px 50px; color: black;">
+
+  <div style="text-align: justify; padding: 30px 50px; color: black;">
     <form class="example-form">
       <mat-form-field class="example-full-width" style="width: 45%;">
         <input matInput placeholder="Titre du formulaire" name="titre" [(ngModel)]="enquete.title">
@@ -18,13 +19,20 @@
         <textarea matInput placeholder="Description" name="description" [(ngModel)]="enquete.description"></textarea>
       </mat-form-field>
     </form>
-    <ng-template #dynamic></ng-template>
 
-    <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Select cities" [(ngModel)]="selectedCityIds">
-    </ng-select>
-    <p>
-      Selected cities: {{selectedCityIds}}
-    </p>
+    <mat-grid-list cols="5" rowHeight="2:1">
+      <mat-grid-tile [colspan]="3">
+        <ng-select style="width: 100%;" appendTo="div" [closeOnSelect]="false" [items]="employees" bindLabel="fullName" [multiple]="true"
+          placeholder="Visibilité" [(ngModel)]="selectedEmployees" [disabled]="visibleForAll">
+        </ng-select>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-checkbox [(ngModel)]="visibleForAll">Visible pour tout le monde</mat-checkbox>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br>
+
+    <ng-template #dynamic></ng-template>
 
     <button mat-button (click)="addQtext()">Ajouter question à réponse texte</button>
     <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>

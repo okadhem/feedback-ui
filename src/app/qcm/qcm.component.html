@@ -1,11 +1,19 @@
 <mat-divider></mat-divider>
 <div style="padding: 20px;">
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
-      <!--<mat-icon matSuffix style="cursor: pointer;">clear</mat-icon>-->
-    </mat-form-field>
-  </form>
+  <table style="width: 100%">
+    <tr>
+      <td>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+          </mat-form-field>
+        </form>
+      </td>
+      <td style="width: 20%;">
+        <mat-checkbox [(ngModel)]="question.required">Obligatoire</mat-checkbox>
+      </td>
+    </tr>
+  </table>
 
   <form class="example-form" style="padding: 0 20px; width: 70%;" *ngFor="let option of question.choices; let i=index; trackBy: trackByFn">
     <mat-form-field class="example-full-width">
@@ -18,4 +26,3 @@
   <button mat-button (click)="addOption()">Ajouter une option</button>
 </div>
 <br>
-

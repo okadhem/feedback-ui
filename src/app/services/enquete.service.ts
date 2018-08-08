@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Enquete } from '../enquete';
+import { Enquete, Person } from '../enquete';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -41,6 +41,11 @@ export class EnqueteService {
 
   getMyResponse(surveyId: Number, connectedUser: Number): Observable<SurveyResponse> {
     return this.http.get<SurveyResponse>(`http://localhost:8088/api/surveys/${surveyId}/my-response?connected-user=${connectedUser}`)
+      .catch(this.errorHandler);
+  }
+
+  getEmployees(): Observable<Person[]> {
+    return this.http.get<Person[]>(`http://localhost:8088/api/employees`)
       .catch(this.errorHandler);
   }
 

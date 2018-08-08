@@ -8,6 +8,15 @@ import { SurveyResponse } from '../surveyResponse';
 import { Response } from '../response';
 import { ResponseSingleValue } from '../responseSingleValue';
 import { AuthService } from '../services/auth.service';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-form-renderer',
@@ -16,6 +25,12 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class FormRendererComponent implements OnInit {
+  requiredFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  matcher = new MyErrorStateMatcher();
+
   enquete$: Observable<Enquete>;
   surveyResponse: SurveyResponse;
   allResponses$: Observable<SurveyResponse[]>;
