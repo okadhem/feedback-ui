@@ -8,28 +8,17 @@ import { SurveyResponse } from '../surveyResponse';
 import { Response } from '../response';
 import { ResponseSingleValue } from '../responseSingleValue';
 import { AuthService } from '../services/auth.service';
-<<<<<<< HEAD
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-=======
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ChangeDetectorRef } from '@angular/core';
 
 
 /*export class MyErrorStateMatcher implements ErrorStateMatcher {
->>>>>>> simpleQuestions
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
-<<<<<<< HEAD
-}
-=======
 }*/
->>>>>>> simpleQuestions
 
 @Component({
   selector: 'app-form-renderer',
@@ -38,16 +27,8 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 
 export class FormRendererComponent implements OnInit {
-<<<<<<< HEAD
-  requiredFormControl = new FormControl('', [
-    Validators.required
-  ]);
-
-  matcher = new MyErrorStateMatcher();
-=======
 
   requiredFormControl: FormControl[] = [];
->>>>>>> simpleQuestions
 
   enquete$: Observable<Enquete>;
   surveyResponse: SurveyResponse;
@@ -57,12 +38,8 @@ export class FormRendererComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private enqueteService: EnqueteService,
-<<<<<<< HEAD
-    private authService: AuthService
-=======
     private authService: AuthService,
     private cdRef: ChangeDetectorRef
->>>>>>> simpleQuestions
   ) { }
 
   ngOnInit() {
@@ -73,17 +50,11 @@ export class FormRendererComponent implements OnInit {
     this.surveyResponse.surveyId = +this.route.snapshot.paramMap.get('id');
     this.enquete$.subscribe(enquete => {
       for (var i = 0; i < enquete.questions.length; i++) {
-<<<<<<< HEAD
-        //this.surveyResponse.responses[i].questionId = enquete.questions[i].id;
-=======
->>>>>>> simpleQuestions
         if (enquete.questions[i].type === "QTextEntity" || enquete.questions[i].type === "QMultChoices") {
           let response = new ResponseSingleValue();
           response.questionId = enquete.questions[i].id;
           this.surveyResponse.responses.push(response);
         }
-<<<<<<< HEAD
-=======
 
         if (enquete.questions[i].required === true /*&& enquete.questions[i].type === "QTextEntity"*/) {
           this.requiredFormControl.push(new FormControl('', [
@@ -94,7 +65,6 @@ export class FormRendererComponent implements OnInit {
           this.requiredFormControl.push(new FormControl());
         }
 
->>>>>>> simpleQuestions
       }
     });
   }
@@ -130,11 +100,6 @@ export class FormRendererComponent implements OnInit {
       .subscribe();
   }
 
-<<<<<<< HEAD
-  /*ok(myResponse: SurveyResponse){
-    console.log(myResponse);
-  }*/
-=======
   isValidForm(): Boolean {
     /*for (var i = 0; i < this.requiredFormControl.length; i++) {
       if (this.requiredFormControl[i].hasError('required') === true) {
@@ -148,5 +113,4 @@ export class FormRendererComponent implements OnInit {
   ngAfterViewChecked() {
     this.cdRef.detectChanges();
   }
->>>>>>> simpleQuestions
 }

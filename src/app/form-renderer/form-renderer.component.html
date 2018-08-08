@@ -5,11 +5,7 @@
 
     <mat-tab-group>
         <mat-tab label="Questions">
-<<<<<<< HEAD
-            <div *ngIf="myResponse$ | async as myResponse else elseBlock" style="text-align: justify; padding: 10px 50px; color: black;">
-=======
             <div *ngIf="myResponse$ | async as myResponse" style="text-align: justify; padding: 10px 50px; color: black;">
->>>>>>> simpleQuestions
                 <div *ngIf="myResponse.responses != null else elseBlock">
 
                     <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
@@ -22,15 +18,11 @@
                         <div [ngSwitch]="question.type" style="font-weight: normal; ">
                             <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
                                 <mat-form-field class="example-full-width">
-<<<<<<< HEAD
-                                    <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="myResponse.responses[i].value">
-=======
                                     <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="myResponse.responses[i].value" [formControl]="requiredFormControl[i]">
                                     <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
                                         Cette question est
                                         <strong>obligatoire</strong>
                                     </mat-error>
->>>>>>> simpleQuestions
                                 </mat-form-field>
                             </form>
                             <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="myResponse.responses[i].value">
@@ -42,11 +34,7 @@
                         <br>
                         <mat-divider></mat-divider>
                     </div>
-<<<<<<< HEAD
-                    <button mat-button (click)="edit(myResponse)" [routerLink]="['/home/survey']">Envoyer</button>
-=======
                     <button mat-button (click)="edit(myResponse)" [routerLink]="['/home/survey']" [disabled]="!isValidForm()">Envoyer</button>
->>>>>>> simpleQuestions
                     <button mat-button [routerLink]="['/home/survey']">Annuler</button>
                 </div>
                 <ng-template #elseBlock>
@@ -60,12 +48,6 @@
                         <div [ngSwitch]="question.type" style="font-weight: normal; ">
                             <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
                                 <mat-form-field class="example-full-width">
-<<<<<<< HEAD
-                                    <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value">
-                                </mat-form-field>
-                            </form>
-                            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value">
-=======
                                     <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value" [formControl]="requiredFormControl[i]">
                                     <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
                                         Cette question est
@@ -74,7 +56,6 @@
                                 </mat-form-field>
                             </form>
                             <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value" [formControl]="requiredFormControl[i]">
->>>>>>> simpleQuestions
                                 <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
                                     {{option}}
                                 </mat-radio-button>
@@ -83,20 +64,12 @@
                         <br>
                         <mat-divider></mat-divider>
                     </div>
-<<<<<<< HEAD
-                    <button mat-button (click)="envoyer()" [routerLink]="['/home/survey']">Envoyer</button>
-=======
                     <button mat-button (click)="envoyer()" [routerLink]="['/home/survey']" [disabled]="!isValidForm()">Envoyer</button>
->>>>>>> simpleQuestions
                     <button mat-button [routerLink]="['/home/survey']">Annuler</button>
                 </ng-template>
             </div>
         </mat-tab>
-<<<<<<< HEAD
-        <mat-tab label="Réponses">
-=======
         <!--<mat-tab label="Réponses">
->>>>>>> simpleQuestions
             <div *ngIf="allResponses$ | async as allResponses" style="text-align: justify; padding: 10px 50px; color: black;">
                 <div *ngFor="let response of allResponses">
                     <div *ngFor="let responseQuestion of response.responses; let i = index">
@@ -110,10 +83,6 @@
                     <mat-divider></mat-divider>
                 </div>
             </div>
-<<<<<<< HEAD
-        </mat-tab>
-=======
         </mat-tab>-->
->>>>>>> simpleQuestions
     </mat-tab-group>
 </div>
