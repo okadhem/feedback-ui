@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input,ComponentRef } from '@angular/core';
 import { QChoixMultiples } from '../qChoixMultiples';
 
@@ -8,6 +9,7 @@ import { QChoixMultiples } from '../qChoixMultiples';
 })
 export class QcmComponent implements OnInit {
   question: QChoixMultiples;
+
   compRef: ComponentRef<QcmComponent>;
   isAlive: Boolean;
   
@@ -15,6 +17,7 @@ export class QcmComponent implements OnInit {
   }
 
   ngOnInit() {
+
       this.isAlive = true;
   }
 
