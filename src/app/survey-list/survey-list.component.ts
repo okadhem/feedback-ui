@@ -21,6 +21,7 @@ export class SurveyListComponent implements OnInit {
 
   get(): void {
     this.enqueteService.getSurveys(this.authService.getLoggedInUser().id)
-      .subscribe(enquetes => this.enquetes = enquetes);
+      .subscribe(enquetes =>
+        this.enquetes = enquetes);
   }
 }

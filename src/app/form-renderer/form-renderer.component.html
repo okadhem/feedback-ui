@@ -8,8 +8,6 @@
             <div *ngIf="myResponse$ | async as myResponse else elseBlock" style="text-align: justify; padding: 10px 50px; color: black;">
                 <div *ngIf="myResponse.responses != null else elseBlock">
 
-
-
                     <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
                     <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
 

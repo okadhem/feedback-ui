@@ -20,30 +20,30 @@ export class FormCreatorComponent implements OnInit {
     read: ViewContainerRef
   }) viewContainerRef: ViewContainerRef;
 
-  cities2 = [
-    { id: 1, name: 'Vilnius' },
-    { id: 2, name: 'Kaunas' },
-    { id: 3, name: 'Pavilnys', disabled: true },
-    { id: 4, name: 'Pabradė' },
-    { id: 5, name: 'Klaipėda' }
-  ];
-
-  selectedCity: any;
-  selectedCityIds: string[];
-  selectedCityName = 'Vilnius';
-  selectedCityId: number;
-  selectedUserIds: number[];
+  employees: Array<Person> = [];
+  selectedEmployees: Array<Person> = [];
+  visibleForAll: Boolean;
 
   constructor(private factoryResolver: ComponentFactoryResolver,
     private enqueteService: EnqueteService,
     private authService: AuthService) { }
 
   ngOnInit() {
+    this.getEmployees();
     this.enquete = new Enquete();
+    this.visibleForAll = true;
 
   }
 
-
+  getEmployees() {
+    this.enqueteService.getEmployees()
+      .subscribe(employees => {
+        this.employees = employees;
+        for (var i = 0; i < this.employees.length; i++) {
+          this.employees[i].fullName = this.employees[i].lastName + ' ' + this.employees[i].firstName;
+        }
+      });
+  }
 
   addQtext() {
     let factory = this.factoryResolver.resolveComponentFactory(QtextComponent);
@@ -62,10 +62,8 @@ export class FormCreatorComponent implements OnInit {
   }
 
   envoyer(title: String, description: String, questions: Array<Question>, expirationDate: Date) {
-    //let owner = new Person(1);
-    let visibility = [];
+    let visibility = this.selectedEmployees;
     const newEnquete: Enquete = { title, description, visibility, expirationDate, questions } as Enquete;
-
     this.enqueteService.addSurvey(newEnquete, this.authService.getLoggedInUser().id)
       .subscribe();
   }

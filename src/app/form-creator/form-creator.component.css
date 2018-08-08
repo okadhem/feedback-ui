@@ -8,3 +8,27 @@
 .example-full-width {
     width: 100%;
 }
+
+/deep/ .ng-select.ng-select-focused .ng-select-container .ng-arrow-wrapper .ng-arrow {
+    color: #17498e;
+}
+
+/deep/ .ng-select.ng-select-focused .ng-select-container:after {
+    border-color: #17498e;
+}
+
+/deep/ .ng-select.ng-select-focused .ng-select-container .ng-value-container .ng-placeholder {
+    color: #17498e;
+}
+
+/deep/ .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+    background-color: #17498e;
+}
+
+/deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+    background-color: #17498e;
+}
+
+/deep/ .mat-checkbox-ripple .mat-ripple-element {
+    background: rgba(23, 73, 142, 0.1) !important;
+  }
