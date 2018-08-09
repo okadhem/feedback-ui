@@ -54,7 +54,8 @@ export class FormRendererComponent implements OnInit {
     this.surveyResponse.surveyId = +this.route.snapshot.paramMap.get('id');
     this.enquete$.subscribe(enquete => {
       for (var i = 0; i < enquete.questions.length; i++) {
-        if (enquete.questions[i].type === "QTextEntity" || enquete.questions[i].type === "QMultChoices") {
+        if (enquete.questions[i].type === "QTextEntity" || enquete.questions[i].type === "QMultChoices" ||
+          enquete.questions[i].type === "QNumberEntity") {
           let response = new ResponseSingleValue();
           response.questionId = enquete.questions[i].id;
           this.surveyResponse.responses.push(response);
@@ -66,7 +67,8 @@ export class FormRendererComponent implements OnInit {
 
         }
 
-        if (enquete.questions[i].required === true && enquete.questions[i].type === "QTextEntity") {
+        if (enquete.questions[i].required === true && (enquete.questions[i].type === "QTextEntity" ||
+          enquete.questions[i].type === "QNumberEntity")) {
           this.requiredFormControl.push(new FormControl('', [
             Validators.required
           ]));
@@ -142,7 +144,7 @@ export class FormRendererComponent implements OnInit {
       tab.push(event.source.value);
     } else {
       const i = tab.findIndex(x => x === event.source.value);
-      tab.splice(i,1);
+      tab.splice(i, 1);
     }
   }
 }

@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver,ComponentRef } from '@angular/core';
 import { QcmComponent } from '../qcm/qcm.component';
 import { QtextComponent } from '../qtext/qtext.component';
@@ -10,6 +9,8 @@ import { EnqueteService } from '../services/enquete.service';
 import { AuthService } from '../services/auth.service';
 import { QcheckboxComponent } from '../qcheckbox/qcheckbox.component';
 import { QCheckbox } from '../qCheckbox';
+import { QnumberComponent } from '../qnumber/qnumber.component';
+import { QNumber } from '../qNumber';
 
 
 @Component({
@@ -76,6 +77,17 @@ export class FormCreatorComponent implements OnInit {
     let factory = this.factoryResolver.resolveComponentFactory(QcheckboxComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QCheckbox();
+
+    this.questions.push(compRef);
+    compRef.instance.question = question;
+    compRef.instance.compRef = compRef;
+
+  }
+
+  addQnumber() {
+    let factory = this.factoryResolver.resolveComponentFactory(QnumberComponent);
+    let compRef = this.viewContainerRef.createComponent(factory);
+    let question = new QNumber();
 
     this.questions.push(compRef);
     compRef.instance.question = question;

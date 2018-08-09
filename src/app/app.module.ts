@@ -245,7 +245,8 @@ const routes: Routes = [
     AddThemeComponent,
     QtextComponent,
     QcmComponent, 
-    QcheckboxComponent
+    QcheckboxComponent,
+    QnumberComponent
   ],
 
 })
