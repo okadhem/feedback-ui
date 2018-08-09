@@ -1,0 +1,32 @@
+<mat-divider>
+</mat-divider>
+<div style="padding: 20px;">
+  <table style="width: 100%">
+    <tr>
+      <td>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+          </mat-form-field>
+        </form>
+      </td>
+      <td style="width: 20%;">
+        <mat-checkbox [(ngModel)]="question.required">Obligatoire</mat-checkbox>
+      </td>
+      <td>
+        <button (click)="destroy()"></button>
+      </td>
+    </tr>
+  </table>
+
+  <form class="example-form" style="padding: 0 20px; width: 70%;" *ngFor="let option of question.choices; let i=index; trackBy: trackByFn">
+    <mat-form-field class="example-full-width">
+      <mat-icon matPrefix style="font-size: 13px; padding-right:20px;">check_box_outline_blank</mat-icon>
+      <input matInput name="option" [(ngModel)]="question.choices[i]">
+      <mat-icon matSuffix style="cursor: pointer;" (click)="deleteOption(i)">clear</mat-icon>
+    </mat-form-field>
+  </form>
+
+  <button mat-button (click)="addOption()">Ajouter une option</button>
+</div>
+<br>

@@ -36,6 +36,7 @@
 
     <button mat-button (click)="addQtext()">Ajouter question à réponse texte</button>
     <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
+    <button mat-button (click)="addQcheckbox()">Ajouter question checkbox</button>
     <button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions, enquete.expirationDate)" [routerLink]="['/home/survey']">Envoyer</button>
   </div>
 </div>

@@ -8,9 +8,10 @@ import { SurveyResponse } from '../surveyResponse';
 import { Response } from '../response';
 import { ResponseSingleValue } from '../responseSingleValue';
 import { AuthService } from '../services/auth.service';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ChangeDetectorRef } from '@angular/core';
+import { ResponseMultValues } from '../ResponseMultValues';
 
 
 /*export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -35,11 +36,14 @@ export class FormRendererComponent implements OnInit {
   allResponses$: Observable<SurveyResponse[]>;
   myResponse$: Observable<SurveyResponse>;
 
+  checkboxOptionsFormGroup: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private enqueteService: EnqueteService,
     private authService: AuthService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -55,8 +59,14 @@ export class FormRendererComponent implements OnInit {
           response.questionId = enquete.questions[i].id;
           this.surveyResponse.responses.push(response);
         }
+        else if (enquete.questions[i].type === "QMultChoicesMultAnswers") {
+          let response = new ResponseMultValues();
+          response.questionId = enquete.questions[i].id;
+          this.surveyResponse.responses.push(response);
 
-        if (enquete.questions[i].required === true /*&& enquete.questions[i].type === "QTextEntity"*/) {
+        }
+
+        if (enquete.questions[i].required === true && enquete.questions[i].type === "QTextEntity") {
           this.requiredFormControl.push(new FormControl('', [
             Validators.required
           ]));
@@ -67,6 +77,7 @@ export class FormRendererComponent implements OnInit {
 
       }
     });
+
   }
 
   getSurvey() {
@@ -112,5 +123,26 @@ export class FormRendererComponent implements OnInit {
 
   ngAfterViewChecked() {
     this.cdRef.detectChanges();
+  }
+
+  shouldBeChecked(tab: String[], option: String): Boolean {
+    return !(tab.indexOf(option) === -1);
+  }
+
+  onChange(event, j, tab) {
+    /*if (event.checked) {
+      (<ResponseMultValues>this.surveyResponse.responses[j]).values.push(event.source.value);
+    } else {
+      const i = (<ResponseMultValues>this.surveyResponse.responses[j]).values.findIndex(x => x === event.source.value);
+      (<ResponseMultValues>this.surveyResponse.responses[j]).values.splice(i,1);
+    }
+    console.log((<ResponseMultValues>this.surveyResponse.responses[j]).values);*/
+
+    if (event.checked) {
+      tab.push(event.source.value);
+    } else {
+      const i = tab.findIndex(x => x === event.source.value);
+      tab.splice(i,1);
+    }
   }
 }

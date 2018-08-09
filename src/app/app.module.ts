@@ -94,6 +94,8 @@ import { FormRendererComponent } from './form-renderer/form-renderer.component';
 import { SurveyComponent } from './survey/survey.component';
 import { SurveyListComponent } from './survey-list/survey-list.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { QcheckboxComponent } from './qcheckbox/qcheckbox.component';
+import { QnumberComponent } from './qnumber/qnumber.component';
 
 
 const routes: Routes = [
@@ -158,7 +160,9 @@ const routes: Routes = [
     QcmComponent,
     FormRendererComponent,
     SurveyComponent,
-    SurveyListComponent
+    SurveyListComponent,
+    QcheckboxComponent,
+    QnumberComponent
   ],
   imports: [AutoCompleteModule,
     JsonpModule,
@@ -240,7 +244,8 @@ const routes: Routes = [
     PersonnesConcerneeComponent,
     AddThemeComponent,
     QtextComponent,
-    QcmComponent
+    QcmComponent, 
+    QcheckboxComponent
   ],
 
 })

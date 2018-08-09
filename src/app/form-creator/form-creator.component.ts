@@ -8,6 +8,8 @@ import { QText } from '../qText';
 import { QChoixMultiples } from '../qChoixMultiples';
 import { EnqueteService } from '../services/enquete.service';
 import { AuthService } from '../services/auth.service';
+import { QcheckboxComponent } from '../qcheckbox/qcheckbox.component';
+import { QCheckbox } from '../qCheckbox';
 
 
 @Component({
@@ -63,6 +65,17 @@ export class FormCreatorComponent implements OnInit {
     let factory = this.factoryResolver.resolveComponentFactory(QcmComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QChoixMultiples();
+
+    this.questions.push(compRef);
+    compRef.instance.question = question;
+    compRef.instance.compRef = compRef;
+
+  }
+
+  addQcheckbox() {
+    let factory = this.factoryResolver.resolveComponentFactory(QcheckboxComponent);
+    let compRef = this.viewContainerRef.createComponent(factory);
+    let question = new QCheckbox();
 
     this.questions.push(compRef);
     compRef.instance.question = question;

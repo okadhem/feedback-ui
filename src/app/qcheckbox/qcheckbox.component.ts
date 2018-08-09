@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, ComponentRef } from '@angular/core';
-import { QChoixMultiples } from '../qChoixMultiples';
+import { Component, OnInit, ComponentRef } from '@angular/core';
+import { QCheckbox } from '../qCheckbox';
 
 @Component({
-  selector: 'app-qcm',
-  templateUrl: './qcm.component.html',
-  styleUrls: ['./qcm.component.css']
+  selector: 'app-qcheckbox',
+  templateUrl: './qcheckbox.component.html',
+  styleUrls: ['./qcheckbox.component.css']
 })
-export class QcmComponent implements OnInit {
-  question: QChoixMultiples;
+export class QcheckboxComponent implements OnInit {
 
-  compRef: ComponentRef<QcmComponent>;
+  question: QCheckbox;
+
+  compRef: ComponentRef<QcheckboxComponent>;
   isAlive: Boolean;
 
   constructor() {
@@ -38,5 +39,5 @@ export class QcmComponent implements OnInit {
     this.compRef.destroy();
     this.isAlive = false;
   }
-}
 
+}

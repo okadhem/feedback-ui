@@ -30,6 +30,11 @@
                                     {{option}}
                                 </mat-radio-button>
                             </mat-radio-group>
+                            <form class="example-section" *ngSwitchCase="'QMultChoicesMultAnswers'" style="margin-left: 20px;">
+                                <div *ngFor="let option of question.choices" style="margin: 5px;">
+                                    <mat-checkbox (change)="onChange($event, i, myResponse.responses[i].values)" [value]="option" [checked]="shouldBeChecked(myResponse.responses[i].values, option)">{{option}}</mat-checkbox>
+                                </div>
+                            </form>
                         </div>
                         <br>
                         <mat-divider></mat-divider>
@@ -55,11 +60,16 @@
                                     </mat-error>
                                 </mat-form-field>
                             </form>
-                            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value" [formControl]="requiredFormControl[i]">
+                            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value">
                                 <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
                                     {{option}}
                                 </mat-radio-button>
                             </mat-radio-group>
+                            <form class="example-section" *ngSwitchCase="'QMultChoicesMultAnswers'" style="margin-left: 20px;">
+                                <div *ngFor="let option of question.choices" style="margin: 5px;">
+                                    <mat-checkbox (change)="onChange($event, i, surveyResponse.responses[i].values)" [value]="option">{{option}}</mat-checkbox>
+                                </div>
+                            </form>
                         </div>
                         <br>
                         <mat-divider></mat-divider>
@@ -76,6 +86,9 @@
                         <h4>{{enquete.questions[i].label}}</h4>
                         <div style="font-weight: normal; margin-left: 20px;">
                             {{responseQuestion.value}}
+                        </div>
+                        <div style="font-weight: normal; margin-left: 20px;">
+                            {{responseQuestion.values}}
                         </div>
                         <br>
                     </div>

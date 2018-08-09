@@ -22,6 +22,15 @@
     margin: 15px 0;
 }
 
+.example-section {
+    display: inline-flex;
+    flex-direction: column;
+}
+  
+.example-margin {
+    margin: 5px;
+}
+
 /deep/ .mat-radio-label {
     font-weight: normal;
 }
@@ -44,4 +53,8 @@
 
 /deep/ .mat-focused .mat-form-field-label {
     color: #17498e;
+}
+
+/deep/ .mat-checkbox-layout .mat-checkbox-label {
+    font-weight: normal;
 }
