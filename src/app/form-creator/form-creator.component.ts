@@ -11,6 +11,8 @@ import { QcheckboxComponent } from '../qcheckbox/qcheckbox.component';
 import { QCheckbox } from '../qCheckbox';
 import { QnumberComponent } from '../qnumber/qnumber.component';
 import { QNumber } from '../qNumber';
+import { QdatetimeComponent } from '../qdatetime/qdatetime.component';
+import { QDateTime } from '../qDateTime';
 
 
 @Component({
@@ -88,6 +90,17 @@ export class FormCreatorComponent implements OnInit {
     let factory = this.factoryResolver.resolveComponentFactory(QnumberComponent);
     let compRef = this.viewContainerRef.createComponent(factory);
     let question = new QNumber();
+
+    this.questions.push(compRef);
+    compRef.instance.question = question;
+    compRef.instance.compRef = compRef;
+
+  }
+
+  addQdatetime() {
+    let factory = this.factoryResolver.resolveComponentFactory(QdatetimeComponent);
+    let compRef = this.viewContainerRef.createComponent(factory);
+    let question = new QDateTime();
 
     this.questions.push(compRef);
     compRef.instance.question = question;

@@ -1,0 +1,32 @@
+<mat-divider></mat-divider>
+<div style="padding: 20px;">
+  <table style="width: 100%">
+    <tr>
+      <td>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+          </mat-form-field>
+        </form>
+      </td>
+      <td style="width: 20%;">
+        <mat-checkbox [(ngModel)]="question.required">Obligatoire</mat-checkbox>
+      </td>
+      <td>
+        <button (click)="destroy()"></button>
+      </td>
+    </tr>
+  </table>
+
+  <form class="example-form" style="padding: 0 20px; width: 70%;">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choisir une date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="margin-left: 30px;">
+      <input matInput type="time" disabled>
+    </mat-form-field>
+
+  </form>
+</div>

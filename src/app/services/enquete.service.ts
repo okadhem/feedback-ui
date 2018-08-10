@@ -49,4 +49,8 @@ export class EnqueteService {
       .catch(this.errorHandler);
   }
 
+  isAuthorized(surveyId: Number, connectedUser: Number): Observable<Boolean> {
+    return this.http.get<Boolean>(`http://localhost:8088/api/surveys/${surveyId}/isAuthorized?connected-user=${connectedUser}`);
+  }
+
 }

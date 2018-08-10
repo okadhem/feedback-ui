@@ -96,6 +96,7 @@ import { SurveyListComponent } from './survey-list/survey-list.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { QcheckboxComponent } from './qcheckbox/qcheckbox.component';
 import { QnumberComponent } from './qnumber/qnumber.component';
+import { QdatetimeComponent } from './qdatetime/qdatetime.component';
 
 
 const routes: Routes = [
@@ -162,7 +163,8 @@ const routes: Routes = [
     SurveyComponent,
     SurveyListComponent,
     QcheckboxComponent,
-    QnumberComponent
+    QnumberComponent,
+    QdatetimeComponent
   ],
   imports: [AutoCompleteModule,
     JsonpModule,
@@ -246,7 +248,8 @@ const routes: Routes = [
     QtextComponent,
     QcmComponent, 
     QcheckboxComponent,
-    QnumberComponent
+    QnumberComponent,
+    QdatetimeComponent
   ],
 
 })

@@ -35,6 +35,7 @@ export class FormRendererComponent implements OnInit {
   surveyResponse: SurveyResponse;
   allResponses$: Observable<SurveyResponse[]>;
   myResponse$: Observable<SurveyResponse>;
+  authorized: Boolean = false;
 
   checkboxOptionsFormGroup: FormGroup;
 
@@ -50,8 +51,11 @@ export class FormRendererComponent implements OnInit {
     this.getSurvey();
     this.getAllResponses();
     this.getMyResponses();
+    this.isAuthorized();
+
     this.surveyResponse = new SurveyResponse();
     this.surveyResponse.surveyId = +this.route.snapshot.paramMap.get('id');
+
     this.enquete$.subscribe(enquete => {
       for (var i = 0; i < enquete.questions.length; i++) {
         if (enquete.questions[i].type === "QTextEntity" || enquete.questions[i].type === "QMultChoices" ||
@@ -146,5 +150,11 @@ export class FormRendererComponent implements OnInit {
       const i = tab.findIndex(x => x === event.source.value);
       tab.splice(i, 1);
     }
+  }
+
+  isAuthorized() {
+    this.enqueteService.isAuthorized(+this.route.snapshot.paramMap.get('id'), this.authService.getLoggedInUser().id)
+      .subscribe(x => { this.authorized = x;
+      console.log(this.authorized); });
   }
 }

@@ -97,7 +97,7 @@
                 </ng-template>
             </div>
         </mat-tab>
-        <!--<mat-tab label="Réponses">
+        <mat-tab *ngIf="authorized" label="Réponses">
             <div *ngIf="allResponses$ | async as allResponses" style="text-align: justify; padding: 10px 50px; color: black;">
                 <div *ngFor="let response of allResponses">
                     <div *ngFor="let responseQuestion of response.responses; let i = index">
@@ -114,6 +114,6 @@
                     <mat-divider></mat-divider>
                 </div>
             </div>
-        </mat-tab>-->
+        </mat-tab>
     </mat-tab-group>
 </div>
