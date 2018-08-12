@@ -58,3 +58,11 @@
 /deep/ .mat-checkbox-layout .mat-checkbox-label {
     font-weight: normal;
 }
+
+/deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+    background-color: #17498e;
+}
+
+/deep/ .mat-checkbox-ripple .mat-ripple-element {
+    background: rgba(23, 73, 142, 0.1) !important;
+}

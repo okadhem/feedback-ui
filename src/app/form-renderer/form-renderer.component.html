@@ -80,8 +80,9 @@
                                 </div>
                             </form>
                             <form *ngSwitchCase="'QNumberEntity'" style="margin-left: 20px;" class="example-form">
-                                <mat-form-field class="example-full-width" style="width: 20%;">
-                                    <input matInput type="number" placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value" [formControl]="requiredFormControl[i]">
+                                <mat-form-field class="example-full-width" style="width: 30%;">
+                                    <input matInput type="number" placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value"
+                                        [formControl]="requiredFormControl[i]">
                                     <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
                                         Cette question est
                                         <strong>obligatoire</strong>
@@ -98,6 +99,7 @@
             </div>
         </mat-tab>
         <mat-tab *ngIf="authorized" label="Réponses">
+            <app-survey-report [enquete]="enquete"></app-survey-report>
             <div *ngIf="allResponses$ | async as allResponses" style="text-align: justify; padding: 10px 50px; color: black;">
                 <div *ngFor="let response of allResponses">
                     <div *ngFor="let responseQuestion of response.responses; let i = index">

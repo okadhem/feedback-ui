@@ -53,6 +53,9 @@ export class FormRendererComponent implements OnInit {
     this.getMyResponses();
     this.isAuthorized();
 
+    /*this.enqueteService.getReport(+this.route.snapshot.paramMap.get('id'), this.authService.getLoggedInUser().id)
+      .subscribe(x=> console.log(x));*/
+
     this.surveyResponse = new SurveyResponse();
     this.surveyResponse.surveyId = +this.route.snapshot.paramMap.get('id');
 
@@ -154,7 +157,6 @@ export class FormRendererComponent implements OnInit {
 
   isAuthorized() {
     this.enqueteService.isAuthorized(+this.route.snapshot.paramMap.get('id'), this.authService.getLoggedInUser().id)
-      .subscribe(x => { this.authorized = x;
-      console.log(this.authorized); });
+      .subscribe(x => { this.authorized = x; });
   }
 }

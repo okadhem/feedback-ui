@@ -34,11 +34,33 @@
 
     <ng-template #dynamic></ng-template>
 
-    <button mat-button (click)="addQtext()">Ajouter question à réponse texte</button>
-    <button mat-button (click)="addQcm()">Ajouter question à choix multiples</button>
-    <button mat-button (click)="addQcheckbox()">Ajouter question checkbox</button>
-    <button mat-button (click)="addQnumber()">Ajouter question à réponse numérique</button>
-    <button mat-button (click)="addQdatetime()">Ajouter question date/heure</button>
-    <button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions, enquete.expirationDate)" [routerLink]="['/home/survey']">Envoyer</button>
+    <div align="right">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item disabled>Ajouter question...</button>
+        <button mat-menu-item (click)="addQtext()">
+          <mat-icon style="margin: 0 10%; ">notes</mat-icon>
+          <span style="position: relative;">Réponse texte</span>
+        </button>
+        <button mat-menu-item (click)="addQcm()">
+          <mat-icon style="margin: 0 10%; ">radio_button_checked</mat-icon>
+          <span style="position: relative;">Choix multiples</span>
+        </button>
+        <button mat-menu-item (click)="addQcheckbox()">
+          <mat-icon style="margin: 0 10%; ">check_box</mat-icon>
+          <span style="position: relative;">Case à cocher</span>
+        </button>
+        <button mat-menu-item (click)="addQnumber()">
+          <mat-icon style="margin: 0 10%; ">unfold_more</mat-icon>
+          <span style="position: relative;">Réponse numérique</span>
+        </button>
+      </mat-menu>
+      <button mat-button (click)="envoyer(enquete.title, enquete.description, enquete.questions, enquete.expirationDate)" [routerLink]="['/home/survey']">Envoyer</button>
+      <button mat-button [routerLink]="['/home/survey']">Annuler</button>
+    </div>
+
+    <!--<button mat-button (click)="addQdatetime()">Ajouter question date/heure</button>-->
   </div>
 </div>

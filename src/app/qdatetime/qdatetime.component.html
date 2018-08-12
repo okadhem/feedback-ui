@@ -1,19 +1,19 @@
 <mat-divider></mat-divider>
-<div style="padding: 20px;">
+<div style="padding: 40px 20px;">
   <table style="width: 100%">
     <tr>
       <td>
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Question" [(ngModel)]="question.label" name="question_label">
+            <input matInput placeholder="Question" autocomplete="off" [(ngModel)]="question.label" name="question_label">
           </mat-form-field>
         </form>
       </td>
-      <td style="width: 20%;">
-        <mat-checkbox [(ngModel)]="question.required">Obligatoire</mat-checkbox>
+      <td align="center" style="width: 20%; border-right: 1px solid rgba(0,0,0,.12)">
+        <mat-slide-toggle [(ngModel)]="question.required">Obligatoire</mat-slide-toggle>
       </td>
-      <td>
-        <button (click)="destroy()"></button>
+      <td align="center">
+        <mat-icon style="cursor: pointer; color:rgba(0, 0, 0, 0.5); " (click)="destroy()">delete</mat-icon>
       </td>
     </tr>
   </table>

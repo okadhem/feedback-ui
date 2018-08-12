@@ -49,6 +49,7 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import { TagCloudModule } from 'angular-tag-cloud-module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ScreenshotComponent } from './screenshot/screenshot.component';
 import { MesFeedbacksComponent } from './feedback/mes-feedbacks/mes-feedbacks.component';
@@ -97,6 +98,9 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { QcheckboxComponent } from './qcheckbox/qcheckbox.component';
 import { QnumberComponent } from './qnumber/qnumber.component';
 import { QdatetimeComponent } from './qdatetime/qdatetime.component';
+import { SurveyReportComponent } from './survey-report/survey-report.component';
+import { SurveyReportCanvasComponent } from './survey-report-canvas/survey-report-canvas.component';
+import { SurveyReportCloudComponent } from './survey-report-cloud/survey-report-cloud.component';
 
 
 const routes: Routes = [
@@ -164,7 +168,10 @@ const routes: Routes = [
     SurveyListComponent,
     QcheckboxComponent,
     QnumberComponent,
-    QdatetimeComponent
+    QdatetimeComponent,
+    SurveyReportComponent,
+    SurveyReportCanvasComponent,
+    SurveyReportCloudComponent
   ],
   imports: [AutoCompleteModule,
     JsonpModule,
@@ -203,6 +210,7 @@ const routes: Routes = [
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    TagCloudModule,
     NgSelectModule,
     LoginModule,
     DndModule,

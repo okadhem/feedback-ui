@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Enquete, Person } from '../enquete';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 import { SurveyResponse } from '../surveyResponse';
 
 @Injectable()
@@ -51,6 +51,10 @@ export class EnqueteService {
 
   isAuthorized(surveyId: Number, connectedUser: Number): Observable<Boolean> {
     return this.http.get<Boolean>(`http://localhost:8088/api/surveys/${surveyId}/isAuthorized?connected-user=${connectedUser}`);
+  }
+
+  getReport(surveyId: Number, connectedUser: Number): Observable<any> {
+    return this.http.get<any>(`http://localhost:8088/api/surveys/${surveyId}/report?connected-user=${connectedUser}`);
   }
 
 }
