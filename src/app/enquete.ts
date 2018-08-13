@@ -1,6 +1,7 @@
 import { Question } from './question';
 
 export class Enquete {
+    id: Number;
     title: String;
     description: String;
     visibility: Array<Person>;
