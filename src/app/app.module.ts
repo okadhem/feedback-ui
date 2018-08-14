@@ -101,6 +101,9 @@ import { QdatetimeComponent } from './qdatetime/qdatetime.component';
 import { SurveyReportComponent } from './survey-report/survey-report.component';
 import { SurveyReportCanvasComponent } from './survey-report-canvas/survey-report-canvas.component';
 import { SurveyReportCloudComponent } from './survey-report-cloud/survey-report-cloud.component';
+import { SurveyResponseListComponent } from './survey-response-list/survey-response-list.component';
+import { SurveyResponseComponent } from './survey-response/survey-response.component';
+import { SurveyReportNumberComponent } from './survey-report-number/survey-report-number.component';
 
 
 const routes: Routes = [
@@ -119,6 +122,9 @@ const routes: Routes = [
       { path: 'survey', component: SurveyComponent },
       { path: 'form-creator', component: FormCreatorComponent },
       { path: 'form-renderer/:id', component: FormRendererComponent },
+      { path: 'survey/responses/:id', component: SurveyResponseListComponent },
+      { path: 'survey/response/:id_survey/:id_response_owner/:index', component: SurveyResponseComponent },
+      { path: 'survey/report/:id', component: SurveyReportComponent },
 
 
     ]
@@ -171,7 +177,10 @@ const routes: Routes = [
     QdatetimeComponent,
     SurveyReportComponent,
     SurveyReportCanvasComponent,
-    SurveyReportCloudComponent
+    SurveyReportCloudComponent,
+    SurveyResponseListComponent,
+    SurveyResponseComponent,
+    SurveyReportNumberComponent
   ],
   imports: [AutoCompleteModule,
     JsonpModule,

@@ -2,8 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, Input } from '
 import * as Chart from 'chart.js';
 import { EnqueteService } from '../services/enquete.service';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Enquete } from '../enquete';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { Enquete } from '../enquete';
 })
 export class SurveyReportComponent implements OnInit {
 
-  @Input() enquete: Enquete;
+  enquete$: Observable<Enquete>;
   /*@ViewChild('myCanvas') myCanvas: ElementRef;
   public context: CanvasRenderingContext2D;
   chart: any;*/
@@ -24,6 +26,7 @@ export class SurveyReportComponent implements OnInit {
     private elementRef: ElementRef) { }
 
   ngOnInit() {
+    this.getSurvey();
     /*this.enqueteService.getReport(+this.route.snapshot.paramMap.get('id'), this.authService.getLoggedInUser().id)
       .subscribe(res => {
 
@@ -38,6 +41,13 @@ export class SurveyReportComponent implements OnInit {
           this.dataArray.push(data);
         }
       })*/
+  }
+
+  getSurvey() {
+    this.enquete$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.enqueteService.getSurvey(+params.get('id'), this.authService.getLoggedInUser().id))
+    );
   }
 
   /*ngAfterViewInit() {

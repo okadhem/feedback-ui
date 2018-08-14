@@ -39,9 +39,9 @@
       </th>
       <td mat-cell *matCellDef="let enquete">
         <!--<mat-icon *ngIf="element.title == 'Test 2'">more_vert</mat-icon>-->
-        <mat-icon style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;" [routerLink]="['/home/form-renderer', enquete.id]">reply</mat-icon>
-        <mat-icon *ngIf="isAuthorized(enquete.id)" style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;">list</mat-icon>
-        <mat-icon *ngIf="isAuthorized(enquete.id)" style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;">bar_chart</mat-icon>
+        <mat-icon matTooltip="Répondre" style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;" [routerLink]="['/home/form-renderer', enquete.id]">reply</mat-icon>
+        <mat-icon matTooltip="Liste des réponses" *ngIf="isAuthorized(enquete.id)" style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;" [routerLink]="['/home/survey/responses', enquete.id]">list</mat-icon>
+        <mat-icon matTooltip="Rapport" *ngIf="isAuthorized(enquete.id)" style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;" [routerLink]="['/home/survey/report', enquete.id]">bar_chart</mat-icon>
       </td>
     </ng-container>
 

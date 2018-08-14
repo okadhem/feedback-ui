@@ -3,119 +3,102 @@
         <strong style="color: white; font-size: 25px; font-family: Calibri;">{{ enquete.title }}</strong>
     </div>
 
-    <mat-tab-group>
-        <mat-tab label="Questions">
-            <div *ngIf="myResponse$ | async as myResponse" style="text-align: justify; padding: 10px 50px; color: black;">
-                <div *ngIf="myResponse.responses != null else elseBlock">
+    <div *ngIf="myResponse$ | async as myResponse" style="text-align: justify; padding: 10px 50px; color: black;">
+        <div *ngIf="myResponse.responses != null else elseBlock">
 
-                    <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
-                    <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
+            <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
+            <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
 
-                    <div *ngFor="let question of enquete.questions; let i = index" style="text-align: justify; padding: 10px 50px; color: black;">
-                        <h3>{{question.label}}
-                            <span *ngIf="question.required" style="color: #db4437;"> *</span>
-                        </h3>
-                        <div [ngSwitch]="question.type" style="font-weight: normal; ">
-                            <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="myResponse.responses[i].value" [formControl]="requiredFormControl[i]">
-                                    <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
-                                        Cette question est
-                                        <strong>obligatoire</strong>
-                                    </mat-error>
-                                </mat-form-field>
-                            </form>
-                            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="myResponse.responses[i].value">
-                                <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
-                                    {{option}}
-                                </mat-radio-button>
-                            </mat-radio-group>
-                            <form class="example-section" *ngSwitchCase="'QMultChoicesMultAnswers'" style="margin-left: 20px;">
-                                <div *ngFor="let option of question.choices" style="margin: 5px;">
-                                    <mat-checkbox (change)="onChange($event, i, myResponse.responses[i].values)" [value]="option" [checked]="shouldBeChecked(myResponse.responses[i].values, option)">{{option}}</mat-checkbox>
-                                </div>
-                            </form>
-                            <form *ngSwitchCase="'QNumberEntity'" style="margin-left: 20px;" class="example-form">
-                                <mat-form-field class="example-full-width" style="width: 20%;">
-                                    <input matInput type="number" placeholder="Votre réponse" name="reponse" [(ngModel)]="myResponse.responses[i].value" [formControl]="requiredFormControl[i]">
-                                    <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
-                                        Cette question est
-                                        <strong>obligatoire</strong>
-                                    </mat-error>
-                                </mat-form-field>
-                            </form>
+            <div *ngFor="let question of enquete.questions; let i = index" style="text-align: justify; padding: 10px 50px; color: black;">
+                <h3>{{question.label}}
+                    <span *ngIf="question.required" style="color: #db4437;"> *</span>
+                </h3>
+                <div [ngSwitch]="question.type" style="font-weight: normal; ">
+                    <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="myResponse.responses[i].value" [formControl]="requiredFormControl[i]">
+                            <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
+                                Cette question est
+                                <strong>obligatoire</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </form>
+                    <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="myResponse.responses[i].value">
+                        <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
+                            {{option}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <form class="example-section" *ngSwitchCase="'QMultChoicesMultAnswers'" style="margin-left: 20px;">
+                        <div *ngFor="let option of question.choices" style="margin: 5px;">
+                            <mat-checkbox (change)="onChange($event, i, myResponse.responses[i].values)" [value]="option" [checked]="shouldBeChecked(myResponse.responses[i].values, option)">{{option}}</mat-checkbox>
                         </div>
-                        <br>
-                        <mat-divider></mat-divider>
-                    </div>
-                    <button mat-button (click)="edit(myResponse)" [routerLink]="['/home/survey']" [disabled]="!isValidForm()">Envoyer</button>
-                    <button mat-button [routerLink]="['/home/survey']">Annuler</button>
+                    </form>
+                    <form *ngSwitchCase="'QNumberEntity'" style="margin-left: 20px;" class="example-form">
+                        <mat-form-field class="example-full-width" style="width: 20%;">
+                            <input matInput type="number" placeholder="Votre réponse" name="reponse" [(ngModel)]="myResponse.responses[i].value" [formControl]="requiredFormControl[i]">
+                            <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
+                                Cette question est
+                                <strong>obligatoire</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </form>
                 </div>
-                <ng-template #elseBlock>
-                    <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
-                    <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
+                <br>
+                <mat-divider></mat-divider>
+            </div>
+            <div align="right">
+                <button mat-button (click)="edit(myResponse)" [routerLink]="['/home/survey']" [disabled]="!isValidForm()">Envoyer</button>
+                <button mat-button [routerLink]="['/home/survey']">Annuler</button>
+            </div>
 
-                    <div *ngFor="let question of enquete.questions; let i = index" style="text-align: justify; padding: 10px 50px; color: black;">
-                        <h3>{{question.label}}
-                            <span *ngIf="question.required" style="color: #db4437;"> *</span>
-                        </h3>
-                        <div [ngSwitch]="question.type" style="font-weight: normal; ">
-                            <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value" [formControl]="requiredFormControl[i]">
-                                    <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
-                                        Cette question est
-                                        <strong>obligatoire</strong>
-                                    </mat-error>
-                                </mat-form-field>
-                            </form>
-                            <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value">
-                                <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
-                                    {{option}}
-                                </mat-radio-button>
-                            </mat-radio-group>
-                            <form class="example-section" *ngSwitchCase="'QMultChoicesMultAnswers'" style="margin-left: 20px;">
-                                <div *ngFor="let option of question.choices" style="margin: 5px;">
-                                    <mat-checkbox (change)="onChange($event, i, surveyResponse.responses[i].values)" [value]="option">{{option}}</mat-checkbox>
-                                </div>
-                            </form>
-                            <form *ngSwitchCase="'QNumberEntity'" style="margin-left: 20px;" class="example-form">
-                                <mat-form-field class="example-full-width" style="width: 30%;">
-                                    <input matInput type="number" placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value"
-                                        [formControl]="requiredFormControl[i]">
-                                    <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
-                                        Cette question est
-                                        <strong>obligatoire</strong>
-                                    </mat-error>
-                                </mat-form-field>
-                            </form>
+        </div>
+        <ng-template #elseBlock>
+            <p style="text-align: justify; padding: 20px; color: black;">{{ enquete.description }}</p>
+            <p style="text-align: justify; padding-left: 20px; color: #db4437;">* Obligatoire</p>
+
+            <div *ngFor="let question of enquete.questions; let i = index" style="text-align: justify; padding: 10px 50px; color: black;">
+                <h3>{{question.label}}
+                    <span *ngIf="question.required" style="color: #db4437;"> *</span>
+                </h3>
+                <div [ngSwitch]="question.type" style="font-weight: normal; ">
+                    <form *ngSwitchCase="'QTextEntity'" style="margin-left: 20px;" class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value" [formControl]="requiredFormControl[i]">
+                            <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
+                                Cette question est
+                                <strong>obligatoire</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </form>
+                    <mat-radio-group *ngSwitchCase="'QMultChoices'" class="example-radio-group" style="margin-left: 20px;" [(ngModel)]="surveyResponse.responses[i].value">
+                        <mat-radio-button class="example-radio-button" *ngFor="let option of question.choices" [value]="option">
+                            {{option}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <form class="example-section" *ngSwitchCase="'QMultChoicesMultAnswers'" style="margin-left: 20px;">
+                        <div *ngFor="let option of question.choices" style="margin: 5px;">
+                            <mat-checkbox (change)="onChange($event, i, surveyResponse.responses[i].values)" [value]="option">{{option}}</mat-checkbox>
                         </div>
-                        <br>
-                        <mat-divider></mat-divider>
-                    </div>
-                    <button mat-button (click)="envoyer()" [routerLink]="['/home/survey']" [disabled]="!isValidForm()">Envoyer</button>
-                    <button mat-button [routerLink]="['/home/survey']">Annuler</button>
-                </ng-template>
-            </div>
-        </mat-tab>
-        <mat-tab *ngIf="authorized" label="Réponses">
-            <app-survey-report [enquete]="enquete"></app-survey-report>
-            <div *ngIf="allResponses$ | async as allResponses" style="text-align: justify; padding: 10px 50px; color: black;">
-                <div *ngFor="let response of allResponses">
-                    <div *ngFor="let responseQuestion of response.responses; let i = index">
-                        <h4>{{enquete.questions[i].label}}</h4>
-                        <div style="font-weight: normal; margin-left: 20px;">
-                            {{responseQuestion.value}}
-                        </div>
-                        <div style="font-weight: normal; margin-left: 20px;">
-                            {{responseQuestion.values}}
-                        </div>
-                        <br>
-                    </div>
-                    <br>
-                    <mat-divider></mat-divider>
+                    </form>
+                    <form *ngSwitchCase="'QNumberEntity'" style="margin-left: 20px;" class="example-form">
+                        <mat-form-field class="example-full-width" style="width: 30%;">
+                            <input matInput type="number" placeholder="Votre réponse" name="reponse" [(ngModel)]="surveyResponse.responses[i].value"
+                                [formControl]="requiredFormControl[i]">
+                            <mat-error *ngIf="requiredFormControl[i].hasError('required') && question.required">
+                                Cette question est
+                                <strong>obligatoire</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </form>
                 </div>
+                <br>
+                <mat-divider></mat-divider>
             </div>
-        </mat-tab>
-    </mat-tab-group>
+            <div align="right">
+                <button mat-button (click)="envoyer()" [routerLink]="['/home/survey']" [disabled]="!isValidForm()">Envoyer</button>
+                <button mat-button [routerLink]="['/home/survey']">Annuler</button>
+            </div>
+
+        </ng-template>
+    </div>
 </div>

@@ -1,0 +1,40 @@
+<div *ngIf="enquete$ | async as enquete" style="border: #DDDDDD solid 2px; width: 80%; margin-left: 10%; min-height: 400px;">
+  <div style="background-color: #17498e; width: 100%; text-align: center; padding: 20px;">
+    <strong style="color: white; font-size: 25px; font-family: Calibri;">{{ enquete.title }}</strong>
+  </div>
+
+  <div *ngIf="allResponses$ | async as allResponses" style="text-align: justify; padding: 10px 50px; color: black;">
+
+
+    <table style="width: 100%;">
+      <tr style="border-bottom: 1px solid rgba(0,0,0,.12);">
+        <th mat-header-cell mat-header="fullName" style="width: 90%; padding: 10px 0;">Full name</th>
+        <th mat-header-cell mat-header="view" style="padding: 10px 0;"></th>
+      </tr>
+
+      <tr *ngFor="let response of allResponses; let i=index" style="border-bottom: 1px solid rgba(0,0,0,.12);">
+
+        <td mat-cell style="width: 90%; padding: 10px 0;">
+          {{response.owner.firstName}} {{response.owner.lastName}}
+        </td>
+
+        <td mat-cell style="padding: 10px 0;">
+          <mat-icon style="cursor: pointer; color: rgba(0, 0, 0, 0.5); outline: 0;" [routerLink]="['/home/survey/response', enquete.id, response.owner.id, i]">visibility</mat-icon>
+        </td>
+      </tr>
+    </table>
+
+    <!--{{response.owner.firstName}}
+      <div *ngFor="let responseQuestion of response.responses; let i = index">
+        <h4>{{enquete.questions[i].label}}</h4>
+        <div style="font-weight: normal; margin-left: 20px;">
+          {{responseQuestion.value}}
+        </div>
+        <div style="font-weight: normal; margin-left: 20px;">
+          {{responseQuestion.values}}
+        </div>
+        <br>
+      </div>-->
+    <br>
+  </div>
+</div>

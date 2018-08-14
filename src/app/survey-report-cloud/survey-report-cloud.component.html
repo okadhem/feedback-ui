@@ -1,5 +1,4 @@
-<div *ngIf="data$ | async">
-  <angular-tag-cloud [data]="data" [width]="options.width" [height]="options.height" [overflow]="options.overflow"
-  [zoomOnHover]="zoomOnHoverOptions">
+<div *ngIf="data$ | async" style="width: 100%;">
+  <angular-tag-cloud [data]="data" [overflow]="options.overflow" [zoomOnHover]="zoomOnHoverOptions">
   </angular-tag-cloud>
 </div>

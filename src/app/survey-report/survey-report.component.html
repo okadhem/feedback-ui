@@ -1,10 +1,23 @@
-<div *ngFor="let question of enquete.questions; let i = index">
-  <div *ngIf="question.type != 'QTextEntity'">
-    <h4>{{enquete.questions[i].label}}</h4>
-    <app-survey-report-canvas [index]="i"></app-survey-report-canvas>
+<div *ngIf="enquete$ | async as enquete" style="border: #DDDDDD solid 2px; width: 80%; margin-left: 10%; min-height: 400px;">
+  <div style="background-color: #17498e; width: 100%; text-align: center; padding: 20px;">
+    <strong style="color: white; font-size: 25px; font-family: Calibri;">Rapport - {{ enquete.title }}</strong>
   </div>
-  <div *ngIf="question.type == 'QTextEntity'">
-    <h4>{{enquete.questions[i].label}}</h4>
-    <app-survey-report-cloud [index]="i"></app-survey-report-cloud>
+
+
+  <div *ngFor="let question of enquete.questions; let i = index" style="text-align: justify; padding: 10px 50px; color: black;">
+    <div *ngIf="question.type != 'QTextEntity' && question.type != 'QNumberEntity'" align="center" style="margin: 20px 0;">
+      <h4>{{enquete.questions[i].label}}</h4>
+      <app-survey-report-canvas [index]="i"></app-survey-report-canvas>
+    </div>
+    <div *ngIf="question.type == 'QTextEntity'" align="center" style="margin: 20px 0;">
+      <h4>{{enquete.questions[i].label}}</h4>
+      <app-survey-report-cloud [index]="i"></app-survey-report-cloud>
+    </div>
+
+    <div *ngIf="question.type == 'QNumberEntity'" align="center" style="margin: 20px 0;">
+      <h4>{{enquete.questions[i].label}}</h4>
+      <app-survey-report-number [index]="i"></app-survey-report-number>
+    </div>
+
   </div>
 </div>

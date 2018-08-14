@@ -9,6 +9,11 @@
     width: 100%;
 }
 
+/deep/ .mat-input-element:disabled {
+    color: black;
+}
+
+
 .example-radio-group {
     display: inline-flex;
     flex-direction: column;
@@ -69,4 +74,12 @@
 
 /deep/ .mat-checkbox-ripple .mat-ripple-element {
     background: rgba(23, 73, 142, 0.1) !important;
+}
+
+/deep/ .mat-radio-disabled .mat-radio-label-content {
+    color: black;
+}
+
+/deep/ .mat-checkbox-disabled .mat-checkbox-label {
+    color: black;
 }

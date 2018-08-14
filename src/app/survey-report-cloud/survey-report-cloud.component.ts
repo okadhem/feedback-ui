@@ -15,8 +15,8 @@ export class SurveyReportCloudComponent implements OnInit {
   @Input() index;
   options: CloudOptions = {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value 
-    width: 500,
-    height: 200,
+    width: 1,
+    height: 1,
     overflow: false,
   }
 
@@ -46,7 +46,7 @@ export class SurveyReportCloudComponent implements OnInit {
     this.data$.subscribe(x => {
 
       for (let word in x[this.index].words) {
-      this.data.push({ text: word, weight: x[this.index].words[word]*100 });
+      this.data.push({ text: word, weight: x[this.index].words[word] });
       }
     });
   }
