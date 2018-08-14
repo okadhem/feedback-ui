@@ -87,6 +87,8 @@ export class FormRendererComponent implements OnInit {
       }
     });
 
+
+
   }
 
   getSurvey() {
@@ -112,12 +114,18 @@ export class FormRendererComponent implements OnInit {
 
   envoyer() {
     this.enqueteService.addResponse(this.surveyResponse, this.authService.getLoggedInUser().id)
-      .subscribe();
+      .subscribe(() => {},err => {
+            if(err.match("a required question was not answered ! "))
+                alert("vous devez repondre à toutes les questions obligatoire");
+          });
   }
 
   edit(myResponse: SurveyResponse) {
     this.enqueteService.addResponse(myResponse, this.authService.getLoggedInUser().id)
-      .subscribe();
+        .subscribe(() => {},err => {
+            if(err.match("a required question was not answered ! "))
+                alert("vous devez repondre à toutes les questions obligatoire");
+          });
   }
 
   isValidForm(): Boolean {

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Enquete, Person } from '../enquete';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-
+import { ResponseSingleValue } from '../responseSingleValue';
+import { ResponseMultValues } from '../ResponseMultValues';
 import { catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import { SurveyResponse } from '../surveyResponse';
@@ -25,13 +26,26 @@ export class EnqueteService {
     return this.http.get<Enquete>(`http://localhost:8088/api/surveys/${id}?connected-user=${connectedUser}`)
       .catch(this.errorHandler);
   }
-
+surveyErrorHandle(error: HttpErrorResponse){
+    return Observable.throw(error.error)
+}
   errorHandler(error: HttpErrorResponse) {
     return Observable.throw(error.message || 'Server Error');
   }
 
   addResponse(response: SurveyResponse, connectedUser: Number): Observable<SurveyResponse> {
-    return this.http.post<SurveyResponse>(`http://localhost:8088/api/surveys/${response.surveyId}/responses?connected-user=${connectedUser}`, response);
+   
+      
+   let filtredResponse = response.responses.filter(resp => {
+       return (<ResponseSingleValue>resp).value != undefined &&  (<ResponseSingleValue>resp).value != "" 
+           || (<ResponseMultValues>resp).values != undefined && (<ResponseMultValues>resp).values.length != 0;
+   });
+              
+     response.responses = filtredResponse;
+    
+      return this.http.post<SurveyResponse>(
+        `http://localhost:8088/api/surveys/${response.surveyId}/responses?connected-user=${connectedUser}`
+        , response).catch(this.surveyErrorHandle);
   }
 
   getAllResponses(surveyId: Number, connectedUser: Number): Observable<SurveyResponse[]> {
